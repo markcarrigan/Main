@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Concept Map</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #fafafa;
+        }
+        h1 {
+            color: #333;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        #graph {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+        .node {
+            cursor: pointer;
+        }
+        .node circle {
+            stroke: #fff;
+            stroke-width: 2px;
+        }
+        .node text {
+            font-size: 11px;
+            fill: #333;
+            pointer-events: none;
+        }
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.4;
+        }
+        .tooltip {
+            position: absolute;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 12px;
+            pointer-events: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .controls {
+            margin-bottom: 15px;
+        }
+        .controls label {
+            margin-right: 20px;
+            font-size: 13px;
+        }
+        .legend {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blog Concept Map</h1>
+    <p class="subtitle">Interactive concept map showing relationships between themes in the blog archive.
+    Drag nodes to explore. Node size indicates frequency. Edge thickness indicates co-occurrence.</p>
+
+    <div class="controls">
+        <label>
+            Min connections:
+            <input type="range" id="minEdges" min="1" max="20" value="3">
+            <span id="minEdgesVal">3</span>
+        </label>
+        <label>
+            Link strength:
+            <input type="range" id="linkStrength" min="1" max="100" value="30">
+        </label>
+    </div>
+
+    <svg id="graph" width="1200" height="800"></svg>
+
+    <div class="legend">
+        <strong>Tips:</strong> Drag nodes to reposition. Scroll to zoom. Click nodes for details.
+    </div>
+
+    <div class="tooltip" style="display: none;"></div>
+
+    <script>
+        const data = {"nodes": [{"id": "theorist", "label": "theorist", "size": 5.493061443340549, "doc_count": 2}, {"id": "make", "label": "make", "size": 5.493061443340549, "doc_count": 2}, {"id": "concepts", "label": "concepts", "size": 5.493061443340549, "doc_count": 2}, {"id": "reflexivity", "label": "reflexivity", "size": 6.931471805599453, "doc_count": 3}, {"id": "private", "label": "private", "size": 5.493061443340549, "doc_count": 2}, {"id": "like", "label": "like", "size": 5.493061443340549, "doc_count": 2}, {"id": "institutional", "label": "institutional", "size": 5.493061443340549, "doc_count": 2}, {"id": "morphogenetic", "label": "morphogenetic", "size": 8.047189562170502, "doc_count": 4}, {"id": "scholarship", "label": "scholarship", "size": 5.493061443340549, "doc_count": 2}, {"id": "academic", "label": "academic", "size": 6.931471805599453, "doc_count": 3}, {"id": "research", "label": "research", "size": 5.493061443340549, "doc_count": 2}, {"id": "escalation", "label": "escalation", "size": 5.493061443340549, "doc_count": 2}, {"id": "triage", "label": "triage", "size": 6.931471805599453, "doc_count": 3}, {"id": "abundance", "label": "abundance", "size": 6.931471805599453, "doc_count": 3}, {"id": "individual", "label": "individual", "size": 6.931471805599453, "doc_count": 3}, {"id": "elaboration", "label": "elaboration", "size": 5.493061443340549, "doc_count": 2}, {"id": "failure", "label": "failure", "size": 5.493061443340549, "doc_count": 2}, {"id": "capitalism", "label": "capitalism", "size": 8.047189562170502, "doc_count": 4}, {"id": "theoretical", "label": "theoretical", "size": 5.493061443340549, "doc_count": 2}, {"id": "epistemic", "label": "epistemic", "size": 5.493061443340549, "doc_count": 2}, {"id": "problems", "label": "problems", "size": 5.493061443340549, "doc_count": 2}, {"id": "blog", "label": "blog", "size": 8.047189562170502, "doc_count": 4}, {"id": "labour", "label": "labour", "size": 5.493061443340549, "doc_count": 2}, {"id": "phenomenology", "label": "phenomenology", "size": 5.493061443340549, "doc_count": 2}, {"id": "systems", "label": "systems", "size": 5.493061443340549, "doc_count": 2}, {"id": "flooding", "label": "flooding", "size": 5.493061443340549, "doc_count": 2}, {"id": "sociology", "label": "sociology", "size": 5.493061443340549, "doc_count": 2}, {"id": "something", "label": "something", "size": 6.931471805599453, "doc_count": 3}, {"id": "over", "label": "over", "size": 5.493061443340549, "doc_count": 2}, {"id": "accelerated", "label": "accelerated", "size": 5.493061443340549, "doc_count": 2}, {"id": "turn", "label": "turn", "size": 5.493061443340549, "doc_count": 2}, {"id": "university", "label": "university", "size": 5.493061443340549, "doc_count": 2}, {"id": "technical", "label": "technical", "size": 5.493061443340549, "doc_count": 2}, {"id": "academy", "label": "academy", "size": 5.493061443340549, "doc_count": 2}, {"id": "archer", "label": "archer", "size": 8.047189562170502, "doc_count": 4}, {"id": "learning", "label": "learning", "size": 5.493061443340549, "doc_count": 2}, {"id": "years", "label": "years", "size": 6.931471805599453, "doc_count": 3}, {"id": "ideas", "label": "ideas", "size": 6.931471805599453, "doc_count": 3}, {"id": "debates", "label": "debates", "size": 5.493061443340549, "doc_count": 2}, {"id": "across", "label": "across", "size": 5.493061443340549, "doc_count": 2}, {"id": "mode", "label": "mode", "size": 5.493061443340549, "doc_count": 2}, {"id": "margaret", "label": "margaret", "size": 8.047189562170502, "doc_count": 4}, {"id": "agents", "label": "agents", "size": 5.493061443340549, "doc_count": 2}, {"id": "blogging", "label": "blogging", "size": 5.493061443340549, "doc_count": 2}, {"id": "attention", "label": "attention", "size": 8.047189562170502, "doc_count": 4}, {"id": "platforms", "label": "platforms", "size": 5.493061443340549, "doc_count": 2}, {"id": "starting", "label": "starting", "size": 5.493061443340549, "doc_count": 2}, {"id": "offers", "label": "offers", "size": 5.493061443340549, "doc_count": 2}, {"id": "exploring", "label": "exploring", "size": 5.493061443340549, "doc_count": 2}, {"id": "information", "label": "information", "size": 5.493061443340549, "doc_count": 2}], "edges": [{"source": "exploring", "target": "research", "weight": 1}, {"source": "blog", "target": "research", "weight": 1}, {"source": "mode", "target": "research", "weight": 1}, {"source": "across", "target": "research", "weight": 1}, {"source": "problems", "target": "research", "weight": 1}, {"source": "research", "target": "starting", "weight": 1}, {"source": "debates", "target": "research", "weight": 1}, {"source": "institutional", "target": "research", "weight": 1}, {"source": "labour", "target": "research", "weight": 1}, {"source": "make", "target": "research", "weight": 1}, {"source": "concepts", "target": "research", "weight": 1}, {"source": "like", "target": "research", "weight": 1}, {"source": "research", "target": "triage", "weight": 1}, {"source": "escalation", "target": "research", "weight": 1}, {"source": "epistemic", "target": "research", "weight": 1}, {"source": "flooding", "target": "research", "weight": 1}, {"source": "phenomenology", "target": "research", "weight": 1}, {"source": "research", "target": "technical", "weight": 1}, {"source": "blog", "target": "exploring", "weight": 1}, {"source": "exploring", "target": "mode", "weight": 1}, {"source": "across", "target": "exploring", "weight": 1}, {"source": "exploring", "target": "problems", "weight": 1}, {"source": "exploring", "target": "starting", "weight": 1}, {"source": "debates", "target": "exploring", "weight": 1}, {"source": "exploring", "target": "institutional", "weight": 1}, {"source": "exploring", "target": "labour", "weight": 1}, {"source": "exploring", "target": "make", "weight": 1}, {"source": "concepts", "target": "exploring", "weight": 1}, {"source": "exploring", "target": "like", "weight": 1}, {"source": "exploring", "target": "triage", "weight": 1}, {"source": "escalation", "target": "exploring", "weight": 1}, {"source": "epistemic", "target": "exploring", "weight": 1}, {"source": "exploring", "target": "flooding", "weight": 1}, {"source": "exploring", "target": "phenomenology", "weight": 1}, {"source": "exploring", "target": "technical", "weight": 1}, {"source": "blog", "target": "mode", "weight": 1}, {"source": "across", "target": "blog", "weight": 2}, {"source": "blog", "target": "problems", "weight": 1}, {"source": "blog", "target": "starting", "weight": 1}, {"source": "blog", "target": "debates", "weight": 1}, {"source": "blog", "target": "institutional", "weight": 1}, {"source": "blog", "target": "labour", "weight": 1}, {"source": "blog", "target": "make", "weight": 2}, {"source": "blog", "target": "concepts", "weight": 1}, {"source": "blog", "target": "like", "weight": 1}, {"source": "blog", "target": "triage", "weight": 1}, {"source": "blog", "target": "escalation", "weight": 1}, {"source": "blog", "target": "epistemic", "weight": 1}, {"source": "blog", "target": "flooding", "weight": 1}, {"source": "blog", "target": "phenomenology", "weight": 1}, {"source": "blog", "target": "technical", "weight": 1}, {"source": "across", "target": "mode", "weight": 1}, {"source": "mode", "target": "problems", "weight": 2}, {"source": "mode", "target": "starting", "weight": 1}, {"source": "debates", "target": "mode", "weight": 1}, {"source": "institutional", "target": "mode", "weight": 1}, {"source": "labour", "target": "mode", "weight": 1}, {"source": "make", "target": "mode", "weight": 1}, {"source": "concepts", "target": "mode", "weight": 1}, {"source": "like", "target": "mode", "weight": 1}, {"source": "mode", "target": "triage", "weight": 1}, {"source": "escalation", "target": "mode", "weight": 1}, {"source": "epistemic", "target": "mode", "weight": 2}, {"source": "flooding", "target": "mode", "weight": 2}, {"source": "mode", "target": "phenomenology", "weight": 1}, {"source": "mode", "target": "technical", "weight": 1}, {"source": "across", "target": "problems", "weight": 1}, {"source": "across", "target": "starting", "weight": 1}, {"source": "across", "target": "debates", "weight": 1}, {"source": "across", "target": "institutional", "weight": 1}, {"source": "across", "target": "labour", "weight": 1}, {"source": "across", "target": "make", "weight": 2}, {"source": "across", "target": "concepts", "weight": 1}, {"source": "across", "target": "like", "weight": 1}, {"source": "across", "target": "triage", "weight": 1}, {"source": "across", "target": "escalation", "weight": 1}, {"source": "across", "target": "epistemic", "weight": 1}, {"source": "across", "target": "flooding", "weight": 1}, {"source": "across", "target": "phenomenology", "weight": 1}, {"source": "across", "target": "technical", "weight": 1}, {"source": "problems", "target": "starting", "weight": 1}, {"source": "debates", "target": "problems", "weight": 1}, {"source": "institutional", "target": "problems", "weight": 1}, {"source": "labour", "target": "problems", "weight": 1}, {"source": "make", "target": "problems", "weight": 1}, {"source": "concepts", "target": "problems", "weight": 1}, {"source": "like", "target": "problems", "weight": 1}, {"source": "problems", "target": "triage", "weight": 1}, {"source": "escalation", "target": "problems", "weight": 1}, {"source": "epistemic", "target": "problems", "weight": 2}, {"source": "flooding", "target": "problems", "weight": 2}, {"source": "phenomenology", "target": "problems", "weight": 1}, {"source": "problems", "target": "technical", "weight": 1}, {"source": "debates", "target": "starting", "weight": 1}, {"source": "institutional", "target": "starting", "weight": 1}, {"source": "labour", "target": "starting", "weight": 1}, {"source": "make", "target": "starting", "weight": 1}, {"source": "concepts", "target": "starting", "weight": 1}, {"source": "like", "target": "starting", "weight": 1}, {"source": "starting", "target": "triage", "weight": 1}, {"source": "escalation", "target": "starting", "weight": 1}, {"source": "epistemic", "target": "starting", "weight": 1}, {"source": "flooding", "target": "starting", "weight": 1}, {"source": "phenomenology", "target": "starting", "weight": 1}, {"source": "starting", "target": "technical", "weight": 1}, {"source": "debates", "target": "institutional", "weight": 1}, {"source": "debates", "target": "labour", "weight": 1}, {"source": "debates", "target": "make", "weight": 1}, {"source": "concepts", "target": "debates", "weight": 1}, {"source": "debates", "target": "like", "weight": 2}, {"source": "debates", "target": "triage", "weight": 1}, {"source": "debates", "target": "escalation", "weight": 1}, {"source": "debates", "target": "epistemic", "weight": 1}, {"source": "debates", "target": "flooding", "weight": 1}, {"source": "debates", "target": "phenomenology", "weight": 1}, {"source": "debates", "target": "technical", "weight": 1}, {"source": "institutional", "target": "labour", "weight": 1}, {"source": "institutional", "target": "make", "weight": 1}, {"source": "concepts", "target": "institutional", "weight": 1}, {"source": "institutional", "target": "like", "weight": 1}, {"source": "institutional", "target": "triage", "weight": 1}, {"source": "escalation", "target": "institutional", "weight": 1}, {"source": "epistemic", "target": "institutional", "weight": 1}, {"source": "flooding", "target": "institutional", "weight": 1}, {"source": "institutional", "target": "phenomenology", "weight": 1}, {"source": "institutional", "target": "technical", "weight": 2}, {"source": "labour", "target": "make", "weight": 1}, {"source": "concepts", "target": "labour", "weight": 1}, {"source": "labour", "target": "like", "weight": 1}, {"source": "labour", "target": "triage", "weight": 1}, {"source": "escalation", "target": "labour", "weight": 1}, {"source": "epistemic", "target": "labour", "weight": 1}, {"source": "flooding", "target": "labour", "weight": 1}, {"source": "labour", "target": "phenomenology", "weight": 1}, {"source": "labour", "target": "technical", "weight": 1}, {"source": "concepts", "target": "make", "weight": 1}, {"source": "like", "target": "make", "weight": 1}, {"source": "make", "target": "triage", "weight": 1}, {"source": "escalation", "target": "make", "weight": 1}, {"source": "epistemic", "target": "make", "weight": 1}, {"source": "flooding", "target": "make", "weight": 1}, {"source": "make", "target": "phenomenology", "weight": 1}, {"source": "make", "target": "technical", "weight": 1}, {"source": "concepts", "target": "like", "weight": 1}, {"source": "concepts", "target": "triage", "weight": 1}, {"source": "concepts", "target": "escalation", "weight": 1}, {"source": "concepts", "target": "epistemic", "weight": 1}, {"source": "concepts", "target": "flooding", "weight": 1}, {"source": "concepts", "target": "phenomenology", "weight": 1}, {"source": "concepts", "target": "technical", "weight": 1}, {"source": "like", "target": "triage", "weight": 1}, {"source": "escalation", "target": "like", "weight": 1}, {"source": "epistemic", "target": "like", "weight": 1}, {"source": "flooding", "target": "like", "weight": 1}, {"source": "like", "target": "phenomenology", "weight": 1}, {"source": "like", "target": "technical", "weight": 1}, {"source": "escalation", "target": "triage", "weight": 1}, {"source": "epistemic", "target": "triage", "weight": 1}, {"source": "flooding", "target": "triage", "weight": 1}, {"source": "phenomenology", "target": "triage", "weight": 2}, {"source": "technical", "target": "triage", "weight": 1}, {"source": "epistemic", "target": "escalation", "weight": 1}, {"source": "escalation", "target": "flooding", "weight": 1}, {"source": "escalation", "target": "phenomenology", "weight": 1}, {"source": "escalation", "target": "technical", "weight": 1}, {"source": "epistemic", "target": "flooding", "weight": 2}, {"source": "epistemic", "target": "phenomenology", "weight": 1}, {"source": "epistemic", "target": "technical", "weight": 1}, {"source": "flooding", "target": "phenomenology", "weight": 1}, {"source": "flooding", "target": "technical", "weight": 1}, {"source": "phenomenology", "target": "technical", "weight": 1}, {"source": "agents", "target": "systems", "weight": 1}, {"source": "agents", "target": "labour", "weight": 1}, {"source": "labour", "target": "systems", "weight": 1}, {"source": "blog", "target": "turn", "weight": 1}, {"source": "blog", "target": "blogging", "weight": 2}, {"source": "blog", "target": "over", "weight": 2}, {"source": "blog", "target": "years", "weight": 2}, {"source": "blog", "target": "something", "weight": 2}, {"source": "blogging", "target": "turn", "weight": 1}, {"source": "over", "target": "turn", "weight": 1}, {"source": "turn", "target": "years", "weight": 1}, {"source": "something", "target": "turn", "weight": 1}, {"source": "blogging", "target": "over", "weight": 1}, {"source": "blogging", "target": "years", "weight": 1}, {"source": "blogging", "target": "something", "weight": 1}, {"source": "over", "target": "years", "weight": 2}, {"source": "over", "target": "something", "weight": 2}, {"source": "something", "target": "years", "weight": 2}, {"source": "attention", "target": "capitalism", "weight": 2}, {"source": "attention", "target": "phenomenology", "weight": 1}, {"source": "attention", "target": "something", "weight": 1}, {"source": "attention", "target": "triage", "weight": 2}, {"source": "abundance", "target": "attention", "weight": 2}, {"source": "capitalism", "target": "phenomenology", "weight": 1}, {"source": "capitalism", "target": "something", "weight": 1}, {"source": "capitalism", "target": "triage", "weight": 1}, {"source": "abundance", "target": "capitalism", "weight": 1}, {"source": "phenomenology", "target": "something", "weight": 1}, {"source": "abundance", "target": "phenomenology", "weight": 1}, {"source": "something", "target": "triage", "weight": 1}, {"source": "abundance", "target": "something", "weight": 1}, {"source": "abundance", "target": "triage", "weight": 2}, {"source": "archer", "target": "margaret", "weight": 3}, {"source": "margaret", "target": "theorist", "weight": 1}, {"source": "margaret", "target": "theoretical", "weight": 1}, {"source": "elaboration", "target": "margaret", "weight": 2}, {"source": "margaret", "target": "morphogenetic", "weight": 3}, {"source": "margaret", "target": "offers", "weight": 1}, {"source": "archer", "target": "theorist", "weight": 2}, {"source": "archer", "target": "theoretical", "weight": 2}, {"source": "archer", "target": "elaboration", "weight": 1}, {"source": "archer", "target": "morphogenetic", "weight": 3}, {"source": "archer", "target": "offers", "weight": 1}, {"source": "theoretical", "target": "theorist", "weight": 2}, {"source": "elaboration", "target": "theorist", "weight": 1}, {"source": "morphogenetic", "target": "theorist", "weight": 2}, {"source": "offers", "target": "theorist", "weight": 1}, {"source": "elaboration", "target": "theoretical", "weight": 1}, {"source": "morphogenetic", "target": "theoretical", "weight": 2}, {"source": "offers", "target": "theoretical", "weight": 1}, {"source": "elaboration", "target": "morphogenetic", "weight": 2}, {"source": "elaboration", "target": "offers", "weight": 1}, {"source": "morphogenetic", "target": "offers", "weight": 1}, {"source": "agents", "target": "margaret", "weight": 1}, {"source": "agents", "target": "morphogenetic", "weight": 1}, {"source": "agents", "target": "elaboration", "weight": 1}, {"source": "concepts", "target": "morphogenetic", "weight": 1}, {"source": "morphogenetic", "target": "systems", "weight": 1}, {"source": "morphogenetic", "target": "reflexivity", "weight": 2}, {"source": "archer", "target": "concepts", "weight": 1}, {"source": "archer", "target": "systems", "weight": 1}, {"source": "archer", "target": "reflexivity", "weight": 2}, {"source": "concepts", "target": "theorist", "weight": 1}, {"source": "systems", "target": "theorist", "weight": 1}, {"source": "reflexivity", "target": "theorist", "weight": 1}, {"source": "concepts", "target": "theoretical", "weight": 1}, {"source": "concepts", "target": "systems", "weight": 1}, {"source": "concepts", "target": "reflexivity", "weight": 1}, {"source": "systems", "target": "theoretical", "weight": 1}, {"source": "reflexivity", "target": "theoretical", "weight": 1}, {"source": "reflexivity", "target": "systems", "weight": 1}, {"source": "like", "target": "margaret", "weight": 1}, {"source": "margaret", "target": "university", "weight": 1}, {"source": "debates", "target": "margaret", "weight": 1}, {"source": "margaret", "target": "turn", "weight": 1}, {"source": "archer", "target": "like", "weight": 1}, {"source": "archer", "target": "university", "weight": 1}, {"source": "archer", "target": "debates", "weight": 1}, {"source": "archer", "target": "turn", "weight": 1}, {"source": "like", "target": "university", "weight": 1}, {"source": "like", "target": "turn", "weight": 1}, {"source": "debates", "target": "university", "weight": 1}, {"source": "turn", "target": "university", "weight": 1}, {"source": "debates", "target": "turn", "weight": 1}, {"source": "ideas", "target": "reflexivity", "weight": 1}, {"source": "ideas", "target": "sociology", "weight": 1}, {"source": "ideas", "target": "starting", "weight": 1}, {"source": "reflexivity", "target": "sociology", "weight": 1}, {"source": "reflexivity", "target": "starting", "weight": 1}, {"source": "sociology", "target": "starting", "weight": 1}, {"source": "failure", "target": "sociology", "weight": 1}, {"source": "academic", "target": "sociology", "weight": 1}, {"source": "scholarship", "target": "sociology", "weight": 1}, {"source": "academic", "target": "failure", "weight": 1}, {"source": "failure", "target": "scholarship", "weight": 1}, {"source": "academic", "target": "scholarship", "weight": 1}, {"source": "learning", "target": "private", "weight": 1}, {"source": "private", "target": "technical", "weight": 1}, {"source": "institutional", "target": "private", "weight": 1}, {"source": "capitalism", "target": "private", "weight": 1}, {"source": "accelerated", "target": "private", "weight": 1}, {"source": "academy", "target": "private", "weight": 1}, {"source": "learning", "target": "technical", "weight": 1}, {"source": "institutional", "target": "learning", "weight": 1}, {"source": "capitalism", "target": "learning", "weight": 2}, {"source": "accelerated", "target": "learning", "weight": 1}, {"source": "academy", "target": "learning", "weight": 1}, {"source": "capitalism", "target": "technical", "weight": 1}, {"source": "accelerated", "target": "technical", "weight": 1}, {"source": "academy", "target": "technical", "weight": 1}, {"source": "capitalism", "target": "institutional", "weight": 1}, {"source": "accelerated", "target": "institutional", "weight": 1}, {"source": "academy", "target": "institutional", "weight": 1}, {"source": "accelerated", "target": "capitalism", "weight": 1}, {"source": "academy", "target": "capitalism", "weight": 1}, {"source": "academy", "target": "accelerated", "weight": 2}, {"source": "across", "target": "years", "weight": 1}, {"source": "across", "target": "over", "weight": 1}, {"source": "across", "target": "something", "weight": 1}, {"source": "make", "target": "years", "weight": 1}, {"source": "make", "target": "over", "weight": 1}, {"source": "make", "target": "something", "weight": 1}, {"source": "blogging", "target": "ideas", "weight": 1}, {"source": "attention", "target": "blogging", "weight": 1}, {"source": "blogging", "target": "scholarship", "weight": 1}, {"source": "blog", "target": "ideas", "weight": 1}, {"source": "attention", "target": "blog", "weight": 1}, {"source": "blog", "target": "scholarship", "weight": 1}, {"source": "attention", "target": "ideas", "weight": 1}, {"source": "ideas", "target": "scholarship", "weight": 1}, {"source": "attention", "target": "scholarship", "weight": 1}, {"source": "margaret", "target": "reflexivity", "weight": 1}, {"source": "academic", "target": "accelerated", "weight": 1}, {"source": "academic", "target": "academy", "weight": 1}, {"source": "exploring", "target": "years", "weight": 1}, {"source": "ideas", "target": "years", "weight": 1}, {"source": "offers", "target": "years", "weight": 1}, {"source": "private", "target": "years", "weight": 1}, {"source": "exploring", "target": "ideas", "weight": 1}, {"source": "exploring", "target": "offers", "weight": 1}, {"source": "exploring", "target": "private", "weight": 1}, {"source": "ideas", "target": "offers", "weight": 1}, {"source": "ideas", "target": "private", "weight": 1}, {"source": "offers", "target": "private", "weight": 1}, {"source": "capitalism", "target": "failure", "weight": 1}, {"source": "capitalism", "target": "individual", "weight": 1}, {"source": "capitalism", "target": "platforms", "weight": 2}, {"source": "capitalism", "target": "escalation", "weight": 1}, {"source": "failure", "target": "individual", "weight": 1}, {"source": "attention", "target": "failure", "weight": 1}, {"source": "failure", "target": "platforms", "weight": 1}, {"source": "escalation", "target": "failure", "weight": 1}, {"source": "attention", "target": "individual", "weight": 2}, {"source": "individual", "target": "platforms", "weight": 1}, {"source": "escalation", "target": "individual", "weight": 1}, {"source": "attention", "target": "platforms", "weight": 1}, {"source": "attention", "target": "escalation", "weight": 1}, {"source": "escalation", "target": "platforms", "weight": 1}, {"source": "capitalism", "target": "university", "weight": 1}, {"source": "capitalism", "target": "research", "weight": 1}, {"source": "academic", "target": "capitalism", "weight": 1}, {"source": "platforms", "target": "university", "weight": 1}, {"source": "learning", "target": "university", "weight": 1}, {"source": "research", "target": "university", "weight": 1}, {"source": "academic", "target": "university", "weight": 1}, {"source": "learning", "target": "platforms", "weight": 1}, {"source": "platforms", "target": "research", "weight": 1}, {"source": "academic", "target": "platforms", "weight": 1}, {"source": "learning", "target": "research", "weight": 1}, {"source": "academic", "target": "learning", "weight": 1}, {"source": "academic", "target": "research", "weight": 1}, {"source": "epistemic", "target": "information", "weight": 1}, {"source": "abundance", "target": "epistemic", "weight": 1}, {"source": "epistemic", "target": "individual", "weight": 1}, {"source": "flooding", "target": "information", "weight": 1}, {"source": "abundance", "target": "flooding", "weight": 1}, {"source": "flooding", "target": "individual", "weight": 1}, {"source": "abundance", "target": "information", "weight": 2}, {"source": "information", "target": "problems", "weight": 1}, {"source": "individual", "target": "information", "weight": 2}, {"source": "information", "target": "mode", "weight": 1}, {"source": "abundance", "target": "problems", "weight": 1}, {"source": "abundance", "target": "individual", "weight": 2}, {"source": "abundance", "target": "mode", "weight": 1}, {"source": "individual", "target": "problems", "weight": 1}, {"source": "individual", "target": "mode", "weight": 1}, {"source": "information", "target": "triage", "weight": 1}, {"source": "individual", "target": "triage", "weight": 1}, {"source": "attention", "target": "information", "weight": 1}]};
+
+        const width = 1200;
+        const height = 800;
+
+        const svg = d3.select("#graph")
+            .attr("viewBox", [0, 0, width, height]);
+
+        const g = svg.append("g");
+
+        // Zoom behavior
+        svg.call(d3.zoom()
+            .extent([[0, 0], [width, height]])
+            .scaleExtent([0.5, 4])
+            .on("zoom", (event) => g.attr("transform", event.transform)));
+
+        // Color scale based on document count
+        const colorScale = d3.scaleSequential(d3.interpolateBlues)
+            .domain([0, d3.max(data.nodes, d => d.doc_count)]);
+
+        // Create simulation
+        const simulation = d3.forceSimulation(data.nodes)
+            .force("link", d3.forceLink(data.edges)
+                .id(d => d.id)
+                .distance(100)
+                .strength(d => d.weight / 50))
+            .force("charge", d3.forceManyBody().strength(-200))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(d => d.size + 10));
+
+        // Draw edges
+        const link = g.append("g")
+            .attr("class", "links")
+            .selectAll("line")
+            .data(data.edges)
+            .join("line")
+            .attr("class", "link")
+            .attr("stroke-width", d => Math.sqrt(d.weight));
+
+        // Draw nodes
+        const node = g.append("g")
+            .attr("class", "nodes")
+            .selectAll("g")
+            .data(data.nodes)
+            .join("g")
+            .attr("class", "node")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        node.append("circle")
+            .attr("r", d => d.size)
+            .attr("fill", d => colorScale(d.doc_count));
+
+        node.append("text")
+            .attr("dx", d => d.size + 3)
+            .attr("dy", ".35em")
+            .text(d => d.label);
+
+        // Tooltip
+        const tooltip = d3.select(".tooltip");
+
+        node.on("mouseover", (event, d) => {
+            tooltip
+                .style("display", "block")
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 10) + "px")
+                .html(`<strong>${d.label}</strong><br>Appears in ${d.doc_count} posts`);
+        })
+        .on("mouseout", () => tooltip.style("display", "none"));
+
+        // Update positions on tick
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+
+        // Drag functions
+        function dragstarted(event) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            event.subject.fx = event.subject.x;
+            event.subject.fy = event.subject.y;
+        }
+
+        function dragged(event) {
+            event.subject.fx = event.x;
+            event.subject.fy = event.y;
+        }
+
+        function dragended(event) {
+            if (!event.active) simulation.alphaTarget(0);
+            event.subject.fx = null;
+            event.subject.fy = null;
+        }
+
+        // Controls
+        d3.select("#minEdges").on("input", function() {
+            const val = +this.value;
+            d3.select("#minEdgesVal").text(val);
+            link.style("display", d => d.weight >= val ? null : "none");
+        });
+
+        d3.select("#linkStrength").on("input", function() {
+            const val = +this.value;
+            simulation.force("link").strength(d => d.weight / val);
+            simulation.alpha(0.5).restart();
+        });
+    </script>
+</body>
+</html>

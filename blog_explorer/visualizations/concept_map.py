@@ -27,8 +27,9 @@ def generate_concept_graph(
 
     Nodes are concepts, edges represent how often concepts appear together.
     """
-    # Get top concepts
-    key_concepts = indexer.get_key_concepts(min_doc_freq=10, limit=max_concepts * 2)
+    # Get top concepts (adjust min_doc_freq based on corpus size)
+    min_df = max(2, len(indexer.posts) // 20)
+    key_concepts = indexer.get_key_concepts(min_doc_freq=min_df, limit=max_concepts * 2)
     concept_set = set(c for c, _ in key_concepts[:max_concepts])
 
     # Build co-occurrence matrix

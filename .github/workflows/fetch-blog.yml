@@ -1,0 +1,76 @@
+name: Fetch and Index Blog
+
+on:
+  workflow_dispatch:
+    inputs:
+      blog_url:
+        description: 'Blog URL to fetch'
+        required: true
+        default: 'https://markcarrigan.net'
+      max_pages:
+        description: 'Maximum pages to fetch (100 posts per page)'
+        required: true
+        default: '60'
+  schedule:
+    # Run weekly on Sundays at 2am UTC
+    - cron: '0 2 * * 0'
+
+jobs:
+  fetch-blog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          cd blog_explorer
+          pip install -e .
+
+      - name: Fetch blog posts
+        run: |
+          blog-explorer fetch "${{ github.event.inputs.blog_url || 'https://markcarrigan.net' }}" \
+            -o data/posts.json \
+            --max-pages ${{ github.event.inputs.max_pages || '60' }}
+
+      - name: Generate concept map
+        run: |
+          python blog_explorer/visualizations/concept_map.py \
+            data/posts.index.json \
+            -o data/concept_map.html \
+            --max-concepts 100
+
+      - name: Generate summary
+        run: |
+          blog-explorer summary -i data/posts.index.json > data/summary.txt
+
+      - name: Generate theme analysis
+        run: |
+          blog-explorer themes -i data/posts.index.json > data/themes.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: blog-archive
+          path: |
+            data/posts.json
+            data/posts.index.json
+            data/concept_map.html
+            data/summary.txt
+            data/themes.txt
+          retention-days: 90
+
+      - name: Commit data files (optional)
+        if: github.event_name == 'schedule'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/
+          git diff --staged --quiet || git commit -m "Update blog index $(date +%Y-%m-%d)"
+          git push

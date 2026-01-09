@@ -1,0 +1,202 @@
+[
+  {
+    "id": "sample001",
+    "title": "I asked GPT 5.2 deep research to do an analysis of my intellectual style by exploring a sample of my blog posts",
+    "url": "https://markcarrigan.net/2026/01/06/i-asked-gpt-5-2-deep-research-to-do-an-analysis-of-my-intellectual-style-by-exploring-a-sample-of-my-blog-posts/",
+    "date": "2026-01-06",
+    "content": "I recently used GPT 5.2's deep research mode to analyse my intellectual style across a sample of blog posts. The analysis identified patterns in how I approach problems: starting from immediate debates then widening to institutional adaptation, labour, incentives. I tend to treat objects as structures and ask what they condition, incentivise, make easy or costly. Key concepts like distraction, cognitive triage, communicative escalation, and epistemic flooding recur. There's a consistent bridge between macro conditions and the phenomenology of thinking and acting. The refusal of technical fixes is a recurring theme - I consistently widen the frame from technical debates to broader structural questions.",
+    "excerpt": "Using AI to analyse 14 years of blogging reveals patterns in intellectual style.",
+    "categories": ["AI", "Blogging", "Reflection"],
+    "tags": ["generative-ai", "intellectual-style", "blogging", "self-analysis"]
+  },
+  {
+    "id": "sample002",
+    "title": "The problem of generative AI from a cybernetics perspective: conversational agents as variety machines",
+    "url": "https://markcarrigan.net/2024/04/21/the-problem-of-generative-ai-from-a-cybernetics-perspective-conversational-agents-as-variety-machines/",
+    "date": "2024-04-21",
+    "content": "Conversational agents can be understood as variety machines from a cybernetic perspective. Drawing on Ashby's Law of Requisite Variety, we can see how these systems generate novelty by recombining patterns from training data. The novelty generated doesn't cease to be novel simply because it's parasitic upon training data. This framing helps us understand what these systems do: they produce variety, explore possibility spaces defined by their training. The question becomes what this variety generation means for knowledge work, creativity, and the institutions that depend on human cognitive labour.",
+    "excerpt": "Understanding conversational AI through Ashby's Law of Requisite Variety.",
+    "categories": ["AI", "Theory"],
+    "tags": ["cybernetics", "generative-ai", "variety", "ashby", "knowledge-work"]
+  },
+  {
+    "id": "sample003",
+    "title": "The value of a long-term personal blog in the next phase of GAI",
+    "url": "https://markcarrigan.net/2024/01/27/the-value-of-a-long-term-personal-blog-in-the-next-phase-of-gai/",
+    "date": "2024-01-27",
+    "content": "Keeping a personal blog in the long-term as a knowledge worker will turn out to have been a very good decision, even if the collapse of the blogging era over the 2010s made it difficult not to occasionally wonder if you were wasting your time. The blog has become the default place I turn to in order to develop a thought, responding to what C Wright Mills once called 'the feel of an idea' by trying to give it shape in words. With 5.5k long form posts over 14 years, this archive represents something significant in the age of generative AI.",
+    "excerpt": "Why maintaining a long-term blog matters in the age of generative AI.",
+    "categories": ["Blogging", "AI"],
+    "tags": ["blogging", "generative-ai", "c-wright-mills", "knowledge-work", "personal-archive"]
+  },
+  {
+    "id": "sample004",
+    "title": "My brain has too many tabs open: the problem of attention in digital capitalism",
+    "url": "https://markcarrigan.net/2015/10/23/my-brain-has-too-many-tabs-open-the-problem-of-attention-in-digital-capitalism/",
+    "date": "2015-10-23",
+    "content": "The phenomenology of fragmented attention under digital capitalism is something we all experience but rarely theorise. The constant tab-switching, the pull of notifications, the difficulty of sustained focus. Attention becomes a finite resource that gets allocated, fragmented, competed for. The structures of digital capitalism create an attention economy where our capacity for focus is systematically undermined by the very tools we use for knowledge work. This connects to broader questions about distraction, cognitive triage, and what it means to think under conditions of communicative abundance.",
+    "excerpt": "Theorising the experience of fragmented attention in digital capitalism.",
+    "categories": ["Digital Capitalism", "Attention"],
+    "tags": ["distraction", "attention", "digital-capitalism", "phenomenology", "cognitive-triage"]
+  },
+  {
+    "id": "sample005",
+    "title": "Margaret Archer as neo-classical British social theorist",
+    "url": "https://markcarrigan.net/2017/11/26/margaret-archer-as-neo-classical-british-social-theorist/",
+    "date": "2017-11-26",
+    "content": "While Margaret Archer's theoretical work is widely respected, it is often categorised as little more than an elaboration of Roy Bhaskar and a critique of Anthony Giddens. This framing leaves it secondary to Critical Realism and Structuration Theory. I want to suggest she should be categorised as a neo-classical British social theorist, as her work embodies many of the theoretical themes which concerned early British social theorists. Her morphogenetic approach offers a systematic account of structure and agency that goes beyond the structure-agency debate.",
+    "excerpt": "Reframing Margaret Archer's contribution to social theory.",
+    "categories": ["Social Theory", "Critical Realism"],
+    "tags": ["margaret-archer", "critical-realism", "social-theory", "morphogenesis", "structure-agency"]
+  },
+  {
+    "id": "sample006",
+    "title": "A simple way to understand Margaret Archer's morphogenetic approach",
+    "url": "https://markcarrigan.net/2024/08/01/a-simple-way-to-understand-margaret-archers-morphogenetic-approach/",
+    "date": "2024-08-01",
+    "content": "The morphogenetic approach can be understood through a simple temporal sequence: T1 (structural conditioning) leads to T2-T3 (social interaction) which leads to T4 (structural elaboration or reproduction). At T1, agents encounter structures and cultures that condition but do not determine their actions. Through T2-T3, agents interact with each other and with these conditions. By T4, the outcome is either elaboration (change) or reproduction (continuity) of the original structures. This analytical dualism allows us to examine how structures shape agency while agency shapes structures, without conflating them.",
+    "excerpt": "A clear explanation of the morphogenetic sequence.",
+    "categories": ["Social Theory", "Critical Realism"],
+    "tags": ["margaret-archer", "morphogenesis", "critical-realism", "analytical-dualism", "structure-agency"]
+  },
+  {
+    "id": "sample007",
+    "title": "The Reflexive Imperative and its Relationship to the Morphogenetic Approach",
+    "url": "https://markcarrigan.net/2013/07/21/the-reflexive-imperative-part-1/",
+    "date": "2013-07-21",
+    "content": "Unlike Giddens, who is an eclectic thinker, Archer is a systematic theorist who carefully crafts out a series of fundamental concepts such as analytical dualism, the morphogenetic sequence, the stratification of society and agency. She has developed her approach through a theoretical synthesis that tightly integrates the morphogenetic systems theory of Walter Buckley, the functionalist Marxism of David Lockwood and the critical realism of Bhaskar. The reflexive imperative argues that reflexivity is becoming more necessary as contextual continuity erodes - people can rely less on habit and tradition; they must deliberate more.",
+    "excerpt": "Examining Archer's concept of reflexivity within her broader theoretical framework.",
+    "categories": ["Social Theory", "Critical Realism"],
+    "tags": ["margaret-archer", "reflexivity", "morphogenesis", "internal-conversation", "critical-realism"]
+  },
+  {
+    "id": "sample008",
+    "title": "Margaret Archer (1943-2023)",
+    "url": "https://markcarrigan.net/2023/06/08/margaret-archer-1943-2023/",
+    "date": "2023-06-08",
+    "content": "Margaret Archer has died. I remember reading philosophers like Harry Frankfurt, Alisdair Macintyre and Charles Taylor - all of whom Archer had initially introduced me to - and vaguely getting to grips with critical realism. I was first taught by Margaret Archer in 2006, as an MA Philosophy student at the University of Warwick. The discussions and debates we had laid the groundwork for my later turn towards critical realism. Her influence on my intellectual development was profound.",
+    "excerpt": "A memorial reflection on Margaret Archer's life and influence.",
+    "categories": ["Critical Realism", "Personal"],
+    "tags": ["margaret-archer", "critical-realism", "obituary", "intellectual-biography"]
+  },
+  {
+    "id": "sample009",
+    "title": "The Sociological Craft Project",
+    "url": "https://markcarrigan.net/2013/05/22/the-sociological-craft-project/",
+    "date": "2013-05-22",
+    "content": "In the appendix to Sociological Imagination, entitled 'On Intellectual Craftsmanship', C. Wright Mills advocates keeping a file or journal within which to record your ideas. He argues that doing so encourages you to capture 'fringe-thoughts': various ideas which may be by-products of everyday life. My interest is in the relationship between habit and reflexivity and how people organize everyday life. The sociology of craft must take reflexivity as its starting point: craft cannot be reliably 'read back' from objective conditions or assumed to be an inevitable corollary to a particular sort of activity.",
+    "excerpt": "Exploring Mills' intellectual craftsmanship and its relevance to sociological practice.",
+    "categories": ["Methodology", "Sociology"],
+    "tags": ["c-wright-mills", "intellectual-craft", "reflexivity", "sociological-imagination", "methodology"]
+  },
+  {
+    "id": "sample010",
+    "title": "Your 'daily dose of Sociological Imagination': reflections on social media and public sociology",
+    "url": "https://markcarrigan.net/2014/10/09/your-daily-dose-of-sociological-imagination-reflections-on-social-media-and-public-sociology/",
+    "date": "2014-10-09",
+    "content": "Mills saw this failure of vision and expression in what could almost be construed as epochal terms, representing a failure of sociological imagination at precisely the moment when this distinctive sensibility was most needed. Mills was estranged from the academic establishment, which gave him a degree of intellectual freedom from the cultural norms prevalent within the professional sociology of his day. We have suggested C. Wright Mills as an exemplar of the public and professional orientations for digital scholarship, seeking to connect contemporary discussions of public sociology, digital scholarship and para-academia.",
+    "excerpt": "Connecting Mills to contemporary debates about public sociology and digital scholarship.",
+    "categories": ["Public Sociology", "Digital Scholarship"],
+    "tags": ["c-wright-mills", "public-sociology", "social-media", "digital-scholarship", "sociological-imagination"]
+  },
+  {
+    "id": "sample011",
+    "title": "What does it mean to think sociologically about educational technology?",
+    "url": "https://markcarrigan.net/2021/09/19/what-does-it-mean-to-think-sociologically-about-educational-technology/",
+    "date": "2021-09-19",
+    "content": "One approach would be to invoke the sociological imagination in the sense of drawing out the connections between what C Wright Mills called 'private troubles' and 'public issues'. When students struggle with online learning, is this a private trouble or a public issue? When educators feel overwhelmed by platform demands, what structural conditions produce this experience? Educational technology is never just technical - it embeds assumptions about learning, shapes institutional practices, and connects to broader questions about digital capitalism and the accelerated academy.",
+    "excerpt": "Applying sociological imagination to educational technology.",
+    "categories": ["Education", "Digital Sociology"],
+    "tags": ["educational-technology", "sociological-imagination", "c-wright-mills", "digital-education", "platform-studies"]
+  },
+  {
+    "id": "sample012",
+    "title": "Who actually reads this blog?",
+    "url": "https://markcarrigan.net/2023/11/01/who-actually-reads-this-blog/",
+    "date": "2023-11-01",
+    "content": "The blog receives approximately 12k+ visitors viewing 16k pages each month. People continually stumble across old content from the 5000+ posts spanning 13+ years. Over the years, I have changed my relationship to the blog - whereas I once saw it as something public to promote through social media, I now see it as something quasi-private which I make no effort to promote. The strange afterlife which blog posts can have never ceases to surprise me.",
+    "excerpt": "Reflecting on readership and the evolving purpose of a long-running blog.",
+    "categories": ["Blogging", "Reflection"],
+    "tags": ["blogging", "readership", "analytics", "personal-archive"]
+  },
+  {
+    "id": "sample013",
+    "title": "How blogging is different from tweeting",
+    "url": "https://markcarrigan.net/2023/05/22/how-blogging-is-different-from-tweeting/",
+    "date": "2023-05-22",
+    "content": "Blogging and tweeting are fundamentally different forms of digital writing. A blog post is a space for developing thought, for working through ideas at length. Twitter encourages brevity, reaction, performance. The temporal rhythms differ - blog posts have long afterlives, tweets are ephemeral. The relationship to audience differs - blogging can be quasi-private, a space for thinking in public without necessarily seeking attention. These differences matter for how we understand digital scholarship and public intellectual work.",
+    "excerpt": "Distinguishing between blogging and tweeting as forms of digital expression.",
+    "categories": ["Blogging", "Social Media"],
+    "tags": ["blogging", "twitter", "social-media", "digital-writing", "platform-comparison"]
+  },
+  {
+    "id": "sample014",
+    "title": "An interview with Margaret Archer about her life and work",
+    "url": "https://markcarrigan.net/2022/04/03/an-interview-with-margaret-archer-about-her-life-and-work/",
+    "date": "2022-04-03",
+    "content": "This was originally published in Brock, T., Carrigan, M., & Scambler, G. (2016). Structure, culture and agency: Selected papers of Margaret Archer. Routledge. In the interview, Archer describes how she walked away into the Centre for Critical Realism after her ISA presidency ended. The interview covers her intellectual biography, the development of the morphogenetic approach, her critique of conflation in social theory, and her more recent work on reflexivity.",
+    "excerpt": "A comprehensive interview with Margaret Archer on her intellectual journey.",
+    "categories": ["Critical Realism", "Interviews"],
+    "tags": ["margaret-archer", "critical-realism", "interview", "intellectual-biography", "morphogenesis"]
+  },
+  {
+    "id": "sample015",
+    "title": "What have we lost in the accelerated academy?",
+    "url": "https://markcarrigan.net/2021/02/06/what-have-we-lost-in-the-accelerated-academy/",
+    "date": "2021-02-06",
+    "content": "The accelerated academy has transformed the conditions of intellectual work. The pressure to publish, the metrics that govern academic life, the erosion of time for slow thinking. What have we lost? The capacity for sustained reading, for following intellectual tangents, for work that doesn't fit neatly into outputs and impact statements. The acceleration isn't just about speed - it's about a transformation in the temporal structure of academic life that shapes what kinds of thought are possible.",
+    "excerpt": "Examining what has been lost to academic acceleration.",
+    "categories": ["Higher Education", "Acceleration"],
+    "tags": ["accelerated-academy", "higher-education", "academic-labour", "slow-scholarship", "temporal-structures"]
+  },
+  {
+    "id": "sample016",
+    "title": "C. Wright Mills: Legacies and Prospects – 50 Years On",
+    "url": "https://markcarrigan.net/2011/10/12/c-wright-mills-legacies-and-prospects-50-years-on/",
+    "date": "2011-10-12",
+    "content": "A panel exploring the relevance of C. Wright Mills' ideas 50 years on, considering the value of his legacy and the resources his work offers to understand the rapidly changing social world of the 21st century. Mills' sociological imagination remains vital for connecting private troubles to public issues, for understanding the intersection of biography and history. His critique of abstracted empiricism and grand theory still resonates. His model of intellectual craftsmanship offers resources for thinking about scholarly practice.",
+    "excerpt": "Assessing Mills' continuing relevance fifty years after his death.",
+    "categories": ["Social Theory", "Sociology"],
+    "tags": ["c-wright-mills", "sociological-imagination", "social-theory", "intellectual-history"]
+  },
+  {
+    "id": "sample017",
+    "title": "The distracted people of digital capitalism",
+    "url": "https://markcarrigan.net/2020/03/15/the-distracted-people-of-digital-capitalism/",
+    "date": "2020-03-15",
+    "content": "Digital capitalism produces distracted subjects. This isn't a failure of individual willpower but a structural condition. The attention economy, the design patterns of platforms, the communicative escalation that characterises online life - all these create conditions where sustained attention becomes difficult. Distraction is the phenomenological correlate of the attention economy. Understanding this requires moving beyond individual psychology to examine the political economy and platform architectures that shape our capacity to attend.",
+    "excerpt": "Theorising distraction as a structural feature of digital capitalism.",
+    "categories": ["Digital Capitalism", "Attention"],
+    "tags": ["distraction", "digital-capitalism", "attention-economy", "platform-capitalism", "phenomenology"]
+  },
+  {
+    "id": "sample018",
+    "title": "Platform capitalism and the university",
+    "url": "https://markcarrigan.net/2019/06/20/platform-capitalism-and-the-university/",
+    "date": "2019-06-20",
+    "content": "How does platform capitalism intersect with higher education? Universities are increasingly dependent on platforms - for learning management, for research dissemination, for scholarly communication. This creates new forms of dependency and shapes academic practice. The platform university isn't a future possibility but an emerging present. Understanding this requires attending to the political economy of platforms, their governance structures, and the ways they condition what kinds of academic work are possible and valued.",
+    "excerpt": "Examining the platformization of higher education.",
+    "categories": ["Higher Education", "Platform Studies"],
+    "tags": ["platform-capitalism", "higher-education", "platform-university", "digital-education", "academic-labour"]
+  },
+  {
+    "id": "sample019",
+    "title": "Epistemic flooding and the problem of information abundance",
+    "url": "https://markcarrigan.net/2021/11/08/epistemic-flooding-and-the-problem-of-information-abundance/",
+    "date": "2021-11-08",
+    "content": "Epistemic flooding describes a condition where the sheer volume of information makes evaluation difficult. It's not that we lack information but that we have too much. This creates problems for knowledge work, for democratic deliberation, for individual sense-making. Flooding isn't just accidental - it can be strategic, a mode of power that works by overwhelming rather than censoring. Understanding epistemic flooding requires connecting information theory to political economy and platform studies.",
+    "excerpt": "Introducing the concept of epistemic flooding as a feature of information abundance.",
+    "categories": ["Epistemology", "Digital Capitalism"],
+    "tags": ["epistemic-flooding", "information-abundance", "platform-studies", "knowledge-work", "attention"]
+  },
+  {
+    "id": "sample020",
+    "title": "Cognitive triage in the age of information abundance",
+    "url": "https://markcarrigan.net/2018/04/12/cognitive-triage-in-the-age-of-information-abundance/",
+    "date": "2018-04-12",
+    "content": "Cognitive triage describes the filtering strategies we deploy when faced with more information than we can process. We must constantly decide what deserves attention and what to ignore. These decisions are shaped by platform architectures, by our habits, by the communities we're embedded in. Understanding cognitive triage requires attending to both individual practices and structural conditions. It's not simply a psychological process but a socially shaped response to information abundance.",
+    "excerpt": "Exploring how we manage information overload through cognitive triage.",
+    "categories": ["Epistemology", "Attention"],
+    "tags": ["cognitive-triage", "attention", "information-abundance", "filtering", "platform-studies"]
+  }
+]
