@@ -119,12 +119,92 @@ The `random` command resurfaces forgotten work, counteracting the pressure to al
 ### Writing with your archive
 The `prompt` command generates prompts based on your actual archive, encouraging dialogue between your current and past selves.
 
+## Google Scholar Integration
+
+The tool now includes citation analysis features for mapping influential authors in research fields.
+
+### Installation
+
+```bash
+# Install with Google Scholar support
+pip install -e ".[scholar]"
+```
+
+### CLI Commands
+
+```bash
+# Analyze a research field - find most cited authors
+blog-explorer scholar-analyze "digital sociology" -n "Digital Sociology" -o sociology.json
+
+# Quick view of top authors (no saved output)
+blog-explorer scholar-top "critical realism" --limit 50
+
+# Look up a specific author
+blog-explorer scholar-author "Deborah Lupton"
+
+# Generate visualizations from analysis
+blog-explorer scholar-viz sociology.json -t bubble -o sociology_map.html
+blog-explorer scholar-viz sociology.json -t bar -o sociology_ranking.html
+blog-explorer scholar-viz sociology.json -t network -o sociology_network.html
+```
+
+### Visualization Types
+
+- **Bubble chart**: Interactive bubbles sized by citation count, colored by research interest
+- **Bar chart**: Ranked list of authors by total citations
+- **Network graph**: Authors connected by shared research interests
+
+### Python API
+
+```python
+from blog_explorer import get_fetcher, FieldAnalysis
+
+# Get fetcher (uses mock data if scholarly not installed)
+fetcher = get_fetcher()
+
+# Analyze a field
+analysis = fetcher.analyze_field(
+    query="platform capitalism",
+    field_name="Platform Studies",
+    max_publications=100,
+    max_authors=50,
+    year_low=2015,  # Filter by year
+    fetch_author_details=True
+)
+
+# View results
+for author in analysis.authors[:10]:
+    print(f"{author.name}: {author.citations:,} citations, h-index={author.h_index}")
+
+# Save for later
+fetcher.save_analysis(analysis, Path("platform_studies.json"))
+
+# Generate visualization
+from blog_explorer.visualizations.author_map import (
+    generate_author_bubble_data,
+    generate_html_bubble_chart
+)
+
+data = generate_author_bubble_data(analysis)
+generate_html_bubble_chart(data, output_path=Path("platform_map.html"))
+```
+
+### Notes on Google Scholar Access
+
+- Google Scholar does not have an official API
+- The `scholarly` library scrapes Google Scholar, which may violate their ToS
+- Built-in rate limiting and proxy support help avoid blocks
+- Use `--mock` flag for testing without hitting Scholar
+- For production/heavy use, consider paid APIs like SerpAPI
+
 ## Architecture
 
 - `fetcher.py`: Retrieves posts via WordPress REST API or RSS feeds
 - `indexer.py`: Builds searchable indices with TF-IDF ranking
 - `explorer.py`: High-level exploration interface
+- `scholar.py`: Google Scholar citation analysis
 - `cli.py`: Command-line interface
+- `visualizations/author_map.py`: Citation map visualizations
 
 ## Privacy
 

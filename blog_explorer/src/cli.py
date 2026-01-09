@@ -1,7 +1,8 @@
 """
 Command-line interface for the Blog Explorer.
 
-Provides interactive exploration of blog archives from the terminal.
+Provides interactive exploration of blog archives from the terminal,
+plus Google Scholar citation analysis tools.
 """
 
 import argparse
@@ -11,6 +12,7 @@ from pathlib import Path
 from .fetcher import BlogFetcher
 from .indexer import BlogIndexer
 from .explorer import BlogExplorer
+from .scholar import get_fetcher, FieldAnalysis
 
 
 def cmd_fetch(args):
@@ -161,6 +163,131 @@ def cmd_themes(args):
         print(f"{year}: {', '.join(theme_list)}")
 
 
+# Google Scholar commands
+
+def cmd_scholar_analyze(args):
+    """Analyze a research field using Google Scholar."""
+    print(f"\n{'='*60}")
+    print("GOOGLE SCHOLAR FIELD ANALYSIS")
+    print(f"{'='*60}\n")
+
+    fetcher = get_fetcher(use_mock=args.mock, use_proxy=args.proxy)
+
+    analysis = fetcher.analyze_field(
+        query=args.query,
+        field_name=args.name,
+        max_publications=args.max_pubs,
+        max_authors=args.max_authors,
+        year_low=args.year_from,
+        year_high=args.year_to,
+        fetch_author_details=not args.quick
+    )
+
+    # Save results
+    output_path = Path(args.output)
+    fetcher.save_analysis(analysis, output_path)
+
+    # Print summary
+    print(f"\n{'='*60}")
+    print("ANALYSIS COMPLETE")
+    print(f"{'='*60}")
+    print(f"Field: {analysis.field_name}")
+    print(f"Query: {analysis.query}")
+    print(f"Publications analyzed: {analysis.total_publications_analyzed}")
+    print(f"Authors found: {len(analysis.authors)}")
+    print(f"\nTop 10 most cited authors:\n")
+
+    for i, author in enumerate(analysis.authors[:10], 1):
+        print(f"  {i:2}. {author.name}")
+        print(f"      Citations: {author.citations:,}  |  H-Index: {author.h_index}")
+        if author.affiliation:
+            print(f"      {author.affiliation}")
+        print()
+
+    print(f"\nResults saved to: {output_path}")
+
+
+def cmd_scholar_visualize(args):
+    """Generate visualization from field analysis."""
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from visualizations.author_map import (
+        generate_author_bubble_data,
+        generate_author_network_data,
+        generate_html_bubble_chart,
+        generate_html_bar_chart,
+        generate_html_network_graph
+    )
+
+    print(f"Loading analysis from {args.analysis}...")
+    analysis = FieldAnalysis.from_dict(
+        __import__('json').load(open(args.analysis, 'r', encoding='utf-8'))
+    )
+
+    output_path = Path(args.output)
+
+    if args.type == "bubble":
+        data = generate_author_bubble_data(analysis, max_authors=args.max_authors)
+        generate_html_bubble_chart(data, output_path=output_path)
+    elif args.type == "bar":
+        data = generate_author_bubble_data(analysis, max_authors=args.max_authors)
+        generate_html_bar_chart(data, output_path=output_path)
+    elif args.type == "network":
+        data = generate_author_network_data(analysis, max_authors=args.max_authors)
+        generate_html_network_graph(data, output_path=output_path)
+
+    print(f"Visualization saved to {output_path}")
+
+
+def cmd_scholar_author(args):
+    """Look up a specific author on Google Scholar."""
+    fetcher = get_fetcher(use_mock=args.mock, use_proxy=args.proxy)
+
+    print(f"Searching for author: {args.name}...")
+    author = fetcher.search_author(args.name)
+
+    if not author:
+        print(f"Author not found: {args.name}")
+        sys.exit(1)
+
+    print(f"\n{'='*60}")
+    print(f"AUTHOR: {author.name}")
+    print(f"{'='*60}")
+    if author.affiliation:
+        print(f"Affiliation: {author.affiliation}")
+    if author.interests:
+        print(f"Interests: {', '.join(author.interests)}")
+    print()
+    print(f"Total Citations: {author.citations:,}")
+    print(f"H-Index: {author.h_index}")
+    print(f"i10-Index: {author.i10_index}")
+
+    if author.scholar_id:
+        print(f"\nGoogle Scholar: https://scholar.google.com/citations?user={author.scholar_id}")
+
+
+def cmd_scholar_top(args):
+    """Quick view of top authors in a field."""
+    fetcher = get_fetcher(use_mock=args.mock)
+
+    print(f"Analyzing: {args.query}")
+    print("This may take a few minutes...\n")
+
+    analysis = fetcher.analyze_field(
+        query=args.query,
+        max_publications=args.limit,
+        max_authors=20,
+        fetch_author_details=False
+    )
+
+    print(f"\n{'='*60}")
+    print(f"TOP AUTHORS: {args.query.upper()}")
+    print(f"{'='*60}\n")
+
+    for i, author in enumerate(analysis.authors[:20], 1):
+        print(f"{i:2}. {author.name:<40} {author.citations:>10,} citations")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Explore your blog archive",
@@ -237,6 +364,103 @@ def main():
     themes_parser = subparsers.add_parser("themes", help="Show themes by year")
     themes_parser.add_argument("-i", "--index", default="posts.index.json")
     themes_parser.set_defaults(func=cmd_themes)
+
+    # =========================================================================
+    # Google Scholar commands
+    # =========================================================================
+
+    # Scholar analyze command
+    scholar_analyze = subparsers.add_parser(
+        "scholar-analyze",
+        help="Analyze a research field using Google Scholar"
+    )
+    scholar_analyze.add_argument("query", help="Search query (e.g., 'digital sociology')")
+    scholar_analyze.add_argument("-n", "--name", help="Field name for display")
+    scholar_analyze.add_argument(
+        "-o", "--output",
+        default="field_analysis.json",
+        help="Output file path"
+    )
+    scholar_analyze.add_argument(
+        "--max-pubs",
+        type=int,
+        default=100,
+        help="Max publications to analyze"
+    )
+    scholar_analyze.add_argument(
+        "--max-authors",
+        type=int,
+        default=50,
+        help="Max authors to include"
+    )
+    scholar_analyze.add_argument("--year-from", type=int, help="Filter from year")
+    scholar_analyze.add_argument("--year-to", type=int, help="Filter to year")
+    scholar_analyze.add_argument(
+        "--quick",
+        action="store_true",
+        help="Skip fetching detailed author profiles"
+    )
+    scholar_analyze.add_argument(
+        "--mock",
+        action="store_true",
+        help="Use mock data (for testing)"
+    )
+    scholar_analyze.add_argument(
+        "--proxy",
+        action="store_true",
+        help="Use proxy to avoid rate limits"
+    )
+    scholar_analyze.set_defaults(func=cmd_scholar_analyze)
+
+    # Scholar visualize command
+    scholar_viz = subparsers.add_parser(
+        "scholar-viz",
+        help="Generate author citation map visualization"
+    )
+    scholar_viz.add_argument("analysis", help="Path to field analysis JSON")
+    scholar_viz.add_argument(
+        "-o", "--output",
+        default="author_map.html",
+        help="Output HTML file"
+    )
+    scholar_viz.add_argument(
+        "-t", "--type",
+        choices=["bubble", "bar", "network"],
+        default="bubble",
+        help="Visualization type"
+    )
+    scholar_viz.add_argument(
+        "--max-authors",
+        type=int,
+        default=50,
+        help="Max authors to display"
+    )
+    scholar_viz.set_defaults(func=cmd_scholar_visualize)
+
+    # Scholar author lookup command
+    scholar_author = subparsers.add_parser(
+        "scholar-author",
+        help="Look up a specific author on Google Scholar"
+    )
+    scholar_author.add_argument("name", help="Author name to search")
+    scholar_author.add_argument("--mock", action="store_true", help="Use mock data")
+    scholar_author.add_argument("--proxy", action="store_true", help="Use proxy")
+    scholar_author.set_defaults(func=cmd_scholar_author)
+
+    # Scholar top command (quick analysis)
+    scholar_top = subparsers.add_parser(
+        "scholar-top",
+        help="Quick list of top cited authors in a field"
+    )
+    scholar_top.add_argument("query", help="Search query")
+    scholar_top.add_argument(
+        "-l", "--limit",
+        type=int,
+        default=50,
+        help="Publications to analyze"
+    )
+    scholar_top.add_argument("--mock", action="store_true", help="Use mock data")
+    scholar_top.set_defaults(func=cmd_scholar_top)
 
     args = parser.parse_args()
 

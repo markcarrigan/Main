@@ -4,15 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "blog-explorer"
-version = "0.1.0"
-description = "A tool for exploring long-form personal blog archives"
+version = "0.2.0"
+description = "A tool for exploring long-form personal blog archives with Google Scholar citation analysis"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Mark Carrigan", email = "mark@markcarrigan.net"}
 ]
-keywords = ["blog", "archive", "intellectual-craft", "knowledge-management"]
+keywords = ["blog", "archive", "intellectual-craft", "knowledge-management", "google-scholar", "citations", "academia"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
@@ -29,7 +29,17 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+scholar = [
+    "scholarly>=1.7.0",
+]
 dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+    "black",
+    "mypy",
+]
+all = [
+    "scholarly>=1.7.0",
     "pytest>=7.0",
     "pytest-cov",
     "black",
