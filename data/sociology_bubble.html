@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Cited Authors in Digital Sociology</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: white;
+            font-weight: 300;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .stat {
+            background: rgba(255,255,255,0.15);
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: white;
+        }
+        .stat-value {
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .stat-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        #chart {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .bubble {
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .bubble:hover {
+            opacity: 0.8;
+        }
+        .tooltip {
+            position: absolute;
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 13px;
+            pointer-events: none;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 300px;
+            z-index: 1000;
+        }
+        .tooltip h3 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .tooltip .affiliation {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .tooltip .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .tooltip .metric {
+            text-align: center;
+        }
+        .tooltip .metric-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #667eea;
+        }
+        .tooltip .metric-label {
+            font-size: 10px;
+            color: #999;
+            text-transform: uppercase;
+        }
+        .tooltip .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .tooltip .interest {
+            background: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: #666;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: white;
+            font-size: 12px;
+        }
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .controls {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .controls label {
+            color: white;
+            font-size: 13px;
+        }
+        .controls select, .controls input {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: none;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Most Cited Authors in Digital Sociology</h1>
+        <p class="subtitle">Bubble size represents total citations. Click an author to view their Google Scholar profile.</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Authors</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">100</div>
+                <div class="stat-label">Publications Analyzed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">277,000</div>
+                <div class="stat-label">Total Citations</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <label>
+                Sort by:
+                <select id="sortBy">
+                    <option value="citations">Citations</option>
+                    <option value="h_index">H-Index</option>
+                    <option value="name">Name</option>
+                </select>
+            </label>
+            <label>
+                Min citations:
+                <input type="range" id="minCitations" min="0" max="50000" value="0" step="1000">
+                <span id="minCitationsVal">0</span>
+            </label>
+        </div>
+
+        <svg id="chart" width="1200" height="700"></svg>
+
+        <div class="legend" id="legend"></div>
+    </div>
+
+    <div class="tooltip" style="display: none;"></div>
+
+    <script>
+        const data = {"nodes": [{"id": "Deborah Lupton", "name": "Deborah Lupton", "affiliation": "UNSW Sydney", "citations": 45000, "h_index": 78, "i10_index": 200, "interests": ["digital sociology", "digital health", "data practices"], "primary_interest": "digital sociology", "color_group": 9, "size": 31.213203435596427}, {"id": "Nick Couldry", "name": "Nick Couldry", "affiliation": "London School of Economics", "citations": 52000, "h_index": 82, "i10_index": 180, "interests": ["media theory", "digital culture", "data colonialism"], "primary_interest": "media theory", "color_group": 12, "size": 32.80350850198276}, {"id": "danah boyd", "name": "danah boyd", "affiliation": "Microsoft Research", "citations": 48000, "h_index": 65, "i10_index": 120, "interests": ["social media", "youth", "privacy", "technology"], "primary_interest": "social media", "color_group": 18, "size": 31.908902300206645}, {"id": "Noortje Marres", "name": "Noortje Marres", "affiliation": "University of Warwick", "citations": 12000, "h_index": 42, "i10_index": 80, "interests": ["digital sociology", "issue mapping", "participation"], "primary_interest": "digital sociology", "color_group": 9, "size": 20.954451150103324}, {"id": "David Beer", "name": "David Beer", "affiliation": "University of York", "citations": 15000, "h_index": 45, "i10_index": 90, "interests": ["digital culture", "algorithms", "metrics"], "primary_interest": "digital culture", "color_group": 6, "size": 22.24744871391589}, {"id": "Tarleton Gillespie", "name": "Tarleton Gillespie", "affiliation": "Microsoft Research", "citations": 18000, "h_index": 38, "i10_index": 65, "interests": ["platforms", "content moderation", "algorithms"], "primary_interest": "platforms", "color_group": 16, "size": 23.41640786499874}, {"id": "Jose van Dijck", "name": "Jose van Dijck", "affiliation": "Utrecht University", "citations": 32000, "h_index": 55, "i10_index": 110, "interests": ["platform society", "media studies", "connectivity"], "primary_interest": "platform society", "color_group": 15, "size": 27.88854381999832}, {"id": "Sherry Turkle", "name": "Sherry Turkle", "affiliation": "MIT", "citations": 55000, "h_index": 60, "i10_index": 95, "interests": ["technology and self", "digital devices", "conversation"], "primary_interest": "technology and self", "color_group": 20, "size": 33.452078799117146}], "field_name": "Digital Sociology", "total_analyzed": 100, "fetch_date": "2026-01-09T20:49:07.781245", "interests": ["algorithms", "connectivity", "content moderation", "conversation", "data colonialism", "data practices", "digital culture", "digital devices", "digital health", "digital sociology", "issue mapping", "media studies", "media theory", "metrics", "participation", "platform society", "platforms", "privacy", "social media", "technology", "technology and self", "youth"]};
+
+        const width = 1200;
+        const height = 700;
+        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+
+        const svg = d3.select("#chart");
+        const tooltip = d3.select(".tooltip");
+
+        // Color scale for interests
+        const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
+
+        // Size scale
+        const sizeScale = d3.scaleSqrt()
+            .domain([0, d3.max(data.nodes, d => d.citations)])
+            .range([10, 80]);
+
+        // Create force simulation
+        const simulation = d3.forceSimulation(data.nodes)
+            .force("charge", d3.forceManyBody().strength(5))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(d => sizeScale(d.citations) + 2))
+            .force("x", d3.forceX(width / 2).strength(0.05))
+            .force("y", d3.forceY(height / 2).strength(0.05));
+
+        // Draw bubbles
+        const bubbles = svg.selectAll(".bubble")
+            .data(data.nodes)
+            .join("g")
+            .attr("class", "bubble")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        bubbles.append("circle")
+            .attr("r", d => sizeScale(d.citations))
+            .attr("fill", d => colorScale(d.color_group))
+            .attr("stroke", "white")
+            .attr("stroke-width", 2)
+            .attr("opacity", 0.85);
+
+        bubbles.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", ".3em")
+            .attr("font-size", d => Math.min(sizeScale(d.citations) / 3, 14))
+            .attr("fill", "white")
+            .attr("font-weight", "500")
+            .text(d => d.name.split(" ").pop()); // Last name only
+
+        // Tooltip events
+        bubbles.on("mouseover", (event, d) => {
+            tooltip
+                .style("display", "block")
+                .style("left", (event.pageX + 15) + "px")
+                .style("top", (event.pageY - 10) + "px")
+                .html(`
+                    <h3>${d.name}</h3>
+                    <div class="affiliation">${d.affiliation || 'Affiliation unknown'}</div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">${d.citations.toLocaleString()}</div>
+                            <div class="metric-label">Citations</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${d.h_index}</div>
+                            <div class="metric-label">H-Index</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${d.i10_index}</div>
+                            <div class="metric-label">i10-Index</div>
+                        </div>
+                    </div>
+                    <div class="interests">
+                        ${d.interests.slice(0, 5).map(i => `<span class="interest">${i}</span>`).join('')}
+                    </div>
+                `);
+        })
+        .on("mousemove", (event) => {
+            tooltip
+                .style("left", (event.pageX + 15) + "px")
+                .style("top", (event.pageY - 10) + "px");
+        })
+        .on("mouseout", () => {
+            tooltip.style("display", "none");
+        })
+        .on("click", (event, d) => {
+            if (d.id && d.id !== d.name) {
+                window.open(`https://scholar.google.com/citations?user=${d.id}`, '_blank');
+            } else {
+                window.open(`https://scholar.google.com/scholar?q=author:"${encodeURIComponent(d.name)}"`, '_blank');
+            }
+        });
+
+        // Update positions on tick
+        simulation.on("tick", () => {
+            bubbles.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+
+        // Drag functions
+        function dragstarted(event) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            event.subject.fx = event.subject.x;
+            event.subject.fy = event.subject.y;
+        }
+
+        function dragged(event) {
+            event.subject.fx = event.x;
+            event.subject.fy = event.y;
+        }
+
+        function dragended(event) {
+            if (!event.active) simulation.alphaTarget(0);
+            event.subject.fx = null;
+            event.subject.fy = null;
+        }
+
+        // Build legend
+        const interestCounts = {};
+        data.nodes.forEach(n => {
+            const interest = n.primary_interest;
+            interestCounts[interest] = (interestCounts[interest] || 0) + 1;
+        });
+
+        const legendItems = Object.entries(interestCounts)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 10);
+
+        const legend = d3.select("#legend");
+        legendItems.forEach(([interest, count], i) => {
+            legend.append("div")
+                .attr("class", "legend-item")
+                .html(`<div class="legend-color" style="background: ${colorScale(data.interests.indexOf(interest))}"></div>${interest} (${count})`);
+        });
+
+        // Controls
+        d3.select("#minCitations").on("input", function() {
+            const val = +this.value;
+            d3.select("#minCitationsVal").text(val.toLocaleString());
+            bubbles.style("display", d => d.citations >= val ? null : "none");
+        });
+
+        d3.select("#sortBy").on("change", function() {
+            const sortBy = this.value;
+            // Re-run simulation with new positions
+            simulation.alpha(0.5).restart();
+        });
+    </script>
+</body>
+</html>

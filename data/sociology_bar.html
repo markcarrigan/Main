@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Authors in Digital Sociology by Citations</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 30px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            font-weight: 400;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .bar {
+            cursor: pointer;
+        }
+        .bar:hover {
+            opacity: 0.8;
+        }
+        .bar-label {
+            font-size: 12px;
+            fill: #333;
+        }
+        .bar-value {
+            font-size: 11px;
+            fill: #666;
+        }
+        .tooltip {
+            position: absolute;
+            background: white;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <h1>Top Authors in Digital Sociology by Citations</h1>
+    <div class="chart-container">
+        <svg id="chart"></svg>
+    </div>
+    <div class="tooltip" style="display: none;"></div>
+
+    <script>
+        const data = [{"id": "Sherry Turkle", "name": "Sherry Turkle", "affiliation": "MIT", "citations": 55000, "h_index": 60, "i10_index": 95, "interests": ["technology and self", "digital devices", "conversation"], "primary_interest": "technology and self", "color_group": 20, "size": 33.452078799117146}, {"id": "Nick Couldry", "name": "Nick Couldry", "affiliation": "London School of Economics", "citations": 52000, "h_index": 82, "i10_index": 180, "interests": ["media theory", "digital culture", "data colonialism"], "primary_interest": "media theory", "color_group": 12, "size": 32.80350850198276}, {"id": "danah boyd", "name": "danah boyd", "affiliation": "Microsoft Research", "citations": 48000, "h_index": 65, "i10_index": 120, "interests": ["social media", "youth", "privacy", "technology"], "primary_interest": "social media", "color_group": 18, "size": 31.908902300206645}, {"id": "Deborah Lupton", "name": "Deborah Lupton", "affiliation": "UNSW Sydney", "citations": 45000, "h_index": 78, "i10_index": 200, "interests": ["digital sociology", "digital health", "data practices"], "primary_interest": "digital sociology", "color_group": 9, "size": 31.213203435596427}, {"id": "Jose van Dijck", "name": "Jose van Dijck", "affiliation": "Utrecht University", "citations": 32000, "h_index": 55, "i10_index": 110, "interests": ["platform society", "media studies", "connectivity"], "primary_interest": "platform society", "color_group": 15, "size": 27.88854381999832}, {"id": "Tarleton Gillespie", "name": "Tarleton Gillespie", "affiliation": "Microsoft Research", "citations": 18000, "h_index": 38, "i10_index": 65, "interests": ["platforms", "content moderation", "algorithms"], "primary_interest": "platforms", "color_group": 16, "size": 23.41640786499874}, {"id": "David Beer", "name": "David Beer", "affiliation": "University of York", "citations": 15000, "h_index": 45, "i10_index": 90, "interests": ["digital culture", "algorithms", "metrics"], "primary_interest": "digital culture", "color_group": 6, "size": 22.24744871391589}, {"id": "Noortje Marres", "name": "Noortje Marres", "affiliation": "University of Warwick", "citations": 12000, "h_index": 42, "i10_index": 80, "interests": ["digital sociology", "issue mapping", "participation"], "primary_interest": "digital sociology", "color_group": 9, "size": 20.954451150103324}];
+
+        const margin = { top: 20, right: 120, bottom: 40, left: 200 };
+        const barHeight = 28;
+        const width = 1000;
+        const height = data.length * barHeight + margin.top + margin.bottom;
+
+        const svg = d3.select("#chart")
+            .attr("width", width)
+            .attr("height", height);
+
+        const g = svg.append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const x = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.citations)])
+            .range([0, width - margin.left - margin.right]);
+
+        const y = d3.scaleBand()
+            .domain(data.map(d => d.name))
+            .range([0, data.length * barHeight])
+            .padding(0.2);
+
+        const colorScale = d3.scaleSequential(d3.interpolateBlues)
+            .domain([0, d3.max(data, d => d.h_index)]);
+
+        const tooltip = d3.select(".tooltip");
+
+        // Bars
+        g.selectAll(".bar")
+            .data(data)
+            .join("rect")
+            .attr("class", "bar")
+            .attr("x", 0)
+            .attr("y", d => y(d.name))
+            .attr("width", d => x(d.citations))
+            .attr("height", y.bandwidth())
+            .attr("fill", d => colorScale(d.h_index))
+            .attr("rx", 3)
+            .on("mouseover", (event, d) => {
+                tooltip
+                    .style("display", "block")
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 10) + "px")
+                    .html(`
+                        <strong>${d.name}</strong><br>
+                        ${d.affiliation || ''}<br><br>
+                        Citations: ${d.citations.toLocaleString()}<br>
+                        H-Index: ${d.h_index}<br>
+                        i10-Index: ${d.i10_index}
+                    `);
+            })
+            .on("mouseout", () => tooltip.style("display", "none"))
+            .on("click", (event, d) => {
+                if (d.id && d.id !== d.name) {
+                    window.open(`https://scholar.google.com/citations?user=${d.id}`, '_blank');
+                }
+            });
+
+        // Labels
+        g.selectAll(".bar-label")
+            .data(data)
+            .join("text")
+            .attr("class", "bar-label")
+            .attr("x", -10)
+            .attr("y", d => y(d.name) + y.bandwidth() / 2)
+            .attr("text-anchor", "end")
+            .attr("dy", ".35em")
+            .text(d => d.name);
+
+        // Values
+        g.selectAll(".bar-value")
+            .data(data)
+            .join("text")
+            .attr("class", "bar-value")
+            .attr("x", d => x(d.citations) + 5)
+            .attr("y", d => y(d.name) + y.bandwidth() / 2)
+            .attr("dy", ".35em")
+            .text(d => d.citations.toLocaleString());
+    </script>
+</body>
+</html>

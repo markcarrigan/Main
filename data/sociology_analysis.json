@@ -1,0 +1,121 @@
+{
+  "field_name": "Digital Sociology",
+  "query": "digital sociology",
+  "authors": [
+    {
+      "name": "Deborah Lupton",
+      "scholar_id": "",
+      "affiliation": "UNSW Sydney",
+      "interests": [
+        "digital sociology",
+        "digital health",
+        "data practices"
+      ],
+      "citations": 45000,
+      "h_index": 78,
+      "i10_index": 200,
+      "publications": []
+    },
+    {
+      "name": "Nick Couldry",
+      "scholar_id": "",
+      "affiliation": "London School of Economics",
+      "interests": [
+        "media theory",
+        "digital culture",
+        "data colonialism"
+      ],
+      "citations": 52000,
+      "h_index": 82,
+      "i10_index": 180,
+      "publications": []
+    },
+    {
+      "name": "danah boyd",
+      "scholar_id": "",
+      "affiliation": "Microsoft Research",
+      "interests": [
+        "social media",
+        "youth",
+        "privacy",
+        "technology"
+      ],
+      "citations": 48000,
+      "h_index": 65,
+      "i10_index": 120,
+      "publications": []
+    },
+    {
+      "name": "Noortje Marres",
+      "scholar_id": "",
+      "affiliation": "University of Warwick",
+      "interests": [
+        "digital sociology",
+        "issue mapping",
+        "participation"
+      ],
+      "citations": 12000,
+      "h_index": 42,
+      "i10_index": 80,
+      "publications": []
+    },
+    {
+      "name": "David Beer",
+      "scholar_id": "",
+      "affiliation": "University of York",
+      "interests": [
+        "digital culture",
+        "algorithms",
+        "metrics"
+      ],
+      "citations": 15000,
+      "h_index": 45,
+      "i10_index": 90,
+      "publications": []
+    },
+    {
+      "name": "Tarleton Gillespie",
+      "scholar_id": "",
+      "affiliation": "Microsoft Research",
+      "interests": [
+        "platforms",
+        "content moderation",
+        "algorithms"
+      ],
+      "citations": 18000,
+      "h_index": 38,
+      "i10_index": 65,
+      "publications": []
+    },
+    {
+      "name": "Jose van Dijck",
+      "scholar_id": "",
+      "affiliation": "Utrecht University",
+      "interests": [
+        "platform society",
+        "media studies",
+        "connectivity"
+      ],
+      "citations": 32000,
+      "h_index": 55,
+      "i10_index": 110,
+      "publications": []
+    },
+    {
+      "name": "Sherry Turkle",
+      "scholar_id": "",
+      "affiliation": "MIT",
+      "interests": [
+        "technology and self",
+        "digital devices",
+        "conversation"
+      ],
+      "citations": 55000,
+      "h_index": 60,
+      "i10_index": 95,
+      "publications": []
+    }
+  ],
+  "total_publications_analyzed": 100,
+  "fetch_date": "2026-01-09T20:49:07.781245"
+}

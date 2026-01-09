@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Network in Digital Sociology</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #1a1a2e;
+        }
+        h1 {
+            color: white;
+            font-weight: 300;
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        #chart {
+            background: #16213e;
+            border-radius: 8px;
+        }
+        .node {
+            cursor: pointer;
+        }
+        .node text {
+            fill: white;
+            font-size: 10px;
+            pointer-events: none;
+        }
+        .link {
+            stroke: rgba(255,255,255,0.2);
+            stroke-opacity: 0.6;
+        }
+        .tooltip {
+            position: absolute;
+            background: white;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <h1>Author Network in Digital Sociology</h1>
+    <p class="subtitle">Authors are connected when they share research interests. Edge thickness indicates number of shared interests.</p>
+
+    <svg id="chart" width="1200" height="800"></svg>
+    <div class="tooltip" style="display: none;"></div>
+
+    <script>
+        const data = {"nodes": [{"id": "Deborah Lupton", "name": "Deborah Lupton", "affiliation": "UNSW Sydney", "citations": 45000, "h_index": 78, "interests": ["digital sociology", "digital health", "data practices"], "size": 40.143319972183306}, {"id": "Nick Couldry", "name": "Nick Couldry", "affiliation": "London School of Economics", "citations": 52000, "h_index": 82, "interests": ["media theory", "digital culture", "data colonialism"], "size": 40.57705468444366}, {"id": "danah boyd", "name": "danah boyd", "affiliation": "Microsoft Research", "citations": 48000, "h_index": 65, "interests": ["social media", "youth", "privacy", "technology"], "size": 40.336931369019055}, {"id": "Noortje Marres", "name": "Noortje Marres", "affiliation": "University of Warwick", "citations": 12000, "h_index": 42, "interests": ["digital sociology", "issue mapping", "participation"], "size": 36.17823577589432}, {"id": "David Beer", "name": "David Beer", "affiliation": "University of York", "citations": 15000, "h_index": 45, "interests": ["digital culture", "algorithms", "metrics"], "size": 36.847616433586666}, {"id": "Tarleton Gillespie", "name": "Tarleton Gillespie", "affiliation": "Microsoft Research", "citations": 18000, "h_index": 38, "interests": ["platforms", "content moderation", "algorithms"], "size": 37.39454777267211}, {"id": "Jose van Dijck", "name": "Jose van Dijck", "affiliation": "Utrecht University", "citations": 32000, "h_index": 55, "interests": ["platform society", "media studies", "connectivity"], "size": 39.120567293880775}, {"id": "Sherry Turkle", "name": "Sherry Turkle", "affiliation": "MIT", "citations": 55000, "h_index": 60, "interests": ["technology and self", "digital devices", "conversation"], "size": 40.74531993760251}], "edges": [{"source": "Deborah Lupton", "target": "Noortje Marres", "shared_interests": ["digital sociology"], "weight": 1}, {"source": "Nick Couldry", "target": "David Beer", "shared_interests": ["digital culture"], "weight": 1}, {"source": "David Beer", "target": "Tarleton Gillespie", "shared_interests": ["algorithms"], "weight": 1}], "field_name": "Digital Sociology"};
+
+        const width = 1200;
+        const height = 800;
+
+        const svg = d3.select("#chart");
+        const g = svg.append("g");
+        const tooltip = d3.select(".tooltip");
+
+        // Zoom
+        svg.call(d3.zoom()
+            .extent([[0, 0], [width, height]])
+            .scaleExtent([0.5, 4])
+            .on("zoom", (event) => g.attr("transform", event.transform)));
+
+        const colorScale = d3.scaleSequential(d3.interpolatePlasma)
+            .domain([0, d3.max(data.nodes, d => d.citations)]);
+
+        // Simulation
+        const simulation = d3.forceSimulation(data.nodes)
+            .force("link", d3.forceLink(data.edges)
+                .id(d => d.id)
+                .distance(100)
+                .strength(d => d.weight / 5))
+            .force("charge", d3.forceManyBody().strength(-300))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(d => d.size + 5));
+
+        // Links
+        const link = g.append("g")
+            .selectAll("line")
+            .data(data.edges)
+            .join("line")
+            .attr("class", "link")
+            .attr("stroke-width", d => d.weight * 2);
+
+        // Nodes
+        const node = g.append("g")
+            .selectAll("g")
+            .data(data.nodes)
+            .join("g")
+            .attr("class", "node")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        node.append("circle")
+            .attr("r", d => d.size)
+            .attr("fill", d => colorScale(d.citations))
+            .attr("stroke", "white")
+            .attr("stroke-width", 2);
+
+        node.append("text")
+            .attr("dx", d => d.size + 3)
+            .attr("dy", ".35em")
+            .text(d => d.name.split(" ").pop());
+
+        // Tooltips
+        node.on("mouseover", (event, d) => {
+            tooltip
+                .style("display", "block")
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 10) + "px")
+                .html(`
+                    <strong>${d.name}</strong><br>
+                    ${d.affiliation || ''}<br><br>
+                    Citations: ${d.citations.toLocaleString()}<br>
+                    H-Index: ${d.h_index}<br><br>
+                    <em>Interests:</em> ${d.interests.slice(0, 5).join(", ")}
+                `);
+        })
+        .on("mouseout", () => tooltip.style("display", "none"))
+        .on("click", (event, d) => {
+            if (d.id && d.id !== d.name) {
+                window.open(`https://scholar.google.com/citations?user=${d.id}`, '_blank');
+            }
+        });
+
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+
+        function dragstarted(event) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            event.subject.fx = event.subject.x;
+            event.subject.fy = event.subject.y;
+        }
+
+        function dragged(event) {
+            event.subject.fx = event.x;
+            event.subject.fy = event.y;
+        }
+
+        function dragended(event) {
+            if (!event.active) simulation.alphaTarget(0);
+            event.subject.fx = null;
+            event.subject.fy = null;
+        }
+    </script>
+</body>
+</html>
