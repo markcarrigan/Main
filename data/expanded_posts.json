@@ -1,0 +1,632 @@
+[
+  {
+    "id": "p2026001",
+    "title": "I asked GPT 5.2 deep research to do an analysis of my intellectual style",
+    "url": "https://markcarrigan.net/2026/01/06/i-asked-gpt-5-2-deep-research-to-do-an-analysis-of-my-intellectual-style-by-exploring-a-sample-of-my-blog-posts/",
+    "date": "2026-01-06",
+    "content": "I recently used GPT 5.2's deep research mode to analyse my intellectual style across a sample of blog posts. The analysis identified patterns in how I approach problems: starting from immediate debates then widening to institutional adaptation, labour, incentives. I tend to treat objects as structures and ask what they condition, incentivise, make easy or costly. Key concepts like distraction, cognitive triage, communicative escalation, and epistemic flooding recur. There's a consistent bridge between macro conditions and the phenomenology of thinking and acting. The refusal of technical fixes is a recurring theme.",
+    "excerpt": "Using AI to analyse 14 years of blogging reveals patterns in intellectual style.",
+    "categories": ["AI", "Blogging"],
+    "tags": ["generative-ai", "intellectual-style", "blogging", "self-analysis"]
+  },
+  {
+    "id": "p2025001",
+    "title": "Things I've read in 2025",
+    "url": "https://markcarrigan.net/2025/01/01/things-ive-read-in-2025/",
+    "date": "2025-01-01",
+    "content": "Building on last year's habit of tracking reading, I hope to read more academic papers this year. Recording books and papers as I go through them helps maintain accountability and encourages deeper engagement with the material.",
+    "excerpt": "Recording books and papers read throughout the year.",
+    "categories": ["Reading", "Personal"],
+    "tags": ["reading", "books", "academic-papers"]
+  },
+  {
+    "id": "p2025002",
+    "title": "The most common use of LLMs in 2025 is therapy/companionship",
+    "url": "https://markcarrigan.net/2025/06/09/the-most-common-use-of-llms-in-2025-is-therapy-companionship/",
+    "date": "2025-06-09",
+    "content": "Content analysis of forums and online articles reveals that the most common use of LLMs is therapy and companionship. It's striking how this development features almost nowhere in debates about LLM use by students. LLMs are rapidly diffusing as a reflexive technology that people use to process their experiences and emotions.",
+    "excerpt": "LLMs are becoming reflexive technologies for emotional processing.",
+    "categories": ["AI", "Society"],
+    "tags": ["llm", "therapy", "companionship", "reflexivity", "generative-ai"]
+  },
+  {
+    "id": "p2025003",
+    "title": "A depressing fable about how ChatGPT is corroding trust in scholarship",
+    "url": "https://markcarrigan.net/2025/06/07/a-depressing-fable-about-how-chatgpt-is-corroding-trust-in-scholarship/",
+    "date": "2025-06-07",
+    "content": "Written in preparation for a keynote on generative AI and the crisis of trust. The ease with which AI can generate plausible-sounding academic content is eroding the foundations of scholarly trust that have been built over centuries.",
+    "excerpt": "How generative AI threatens the trust infrastructure of academia.",
+    "categories": ["AI", "Higher Education"],
+    "tags": ["chatgpt", "trust", "scholarship", "academia", "crisis"]
+  },
+  {
+    "id": "p2025004",
+    "title": "Two reviews of Generative AI for Academics",
+    "url": "https://markcarrigan.net/2025/02/12/two-reviews-of-generative-ai-for-academics/",
+    "date": "2025-02-12",
+    "content": "Reviews of my book discuss uses for LLMs including rubberducking - using the AI as a sounding board for ideas. The reviews suggest that LLMs can help you think, and while they might also save you time and effort, it's the thinking help that might matter most.",
+    "excerpt": "Reviews highlighting how LLMs can be tools for thinking.",
+    "categories": ["AI", "Books"],
+    "tags": ["generative-ai", "book-review", "rubberducking", "thinking"]
+  },
+  {
+    "id": "p2025005",
+    "title": "Why did the Bluesky migration succeed where the Mastodon migration failed?",
+    "url": "https://markcarrigan.net/2025/01/11/why-did-the-bluesky-migration-succeed-where-the-mastodon-migration-failed/",
+    "date": "2025-01-11",
+    "content": "Longitudinal analysis shows that the initial surge in Mastodon sign-ups did not translate into sustained long-term user engagement. Bluesky succeeded where Mastodon failed because of differences in onboarding experience, algorithmic discovery, and network effects.",
+    "excerpt": "Comparing platform migrations and what makes them succeed or fail.",
+    "categories": ["Social Media", "Platforms"],
+    "tags": ["bluesky", "mastodon", "twitter", "platform-migration", "social-media"]
+  },
+  {
+    "id": "p2025006",
+    "title": "How Claude is changing: five observations about Sonnet 3.7",
+    "url": "https://markcarrigan.net/2025/05/11/how-claude-is-changing-five-observations-about-sonnet-3-7/",
+    "date": "2025-05-11",
+    "content": "There's not really much point in defining a role for the LLM any more. Role definitions from previous models now cause frustration. The newer models have become more capable but also more opinionated in ways that change how we should interact with them.",
+    "excerpt": "Observations on how Claude's capabilities and behaviors are evolving.",
+    "categories": ["AI"],
+    "tags": ["claude", "anthropic", "llm", "ai-capabilities"]
+  },
+  {
+    "id": "p2025007",
+    "title": "The Eeriness of Writing With Claude: When AI Mirrors Your Voice",
+    "url": "https://markcarrigan.net/2025/04/13/the-eeriness-of-writing-with-claude-when-ai-mirrors-your-voice/",
+    "date": "2025-04-13",
+    "content": "Reflecting on my experience of writing a book about academic writing and AI. There's something eerie about working with an AI that can mirror your voice and style so effectively. It raises questions about authorship, authenticity, and what makes writing distinctively yours.",
+    "excerpt": "The uncanny experience of AI that can imitate your writing style.",
+    "categories": ["AI", "Writing"],
+    "tags": ["claude", "writing", "voice", "authorship", "eeriness"]
+  },
+  {
+    "id": "p2025008",
+    "title": "What Makes Writing Academic in the Age of Generative AI?",
+    "url": "https://markcarrigan.net/2025/04/18/what-makes-writing-academic-in-the-age-of-generative-ai/",
+    "date": "2025-04-18",
+    "content": "Would changes to academic writing necessarily be problematic? Critics have described academic genres as straightjackets, chains, pigeonholes, frauds and hoaxes. Perhaps AI disruption of these conventions opens space for something better.",
+    "excerpt": "Questioning the value of academic writing conventions.",
+    "categories": ["AI", "Academic Writing"],
+    "tags": ["academic-writing", "generative-ai", "genre", "conventions"]
+  },
+  {
+    "id": "p2025009",
+    "title": "CFP: Digital Subjectivities Conference",
+    "url": "https://markcarrigan.net/2025/11/09/cfp-digital-subjectivities-conference-freie-universitat-berlin-may-2026/",
+    "date": "2025-11-09",
+    "content": "Call for papers for an international conference at Freie Universität Berlin on May 21-22, 2026, exploring the impact of digital technologies on subjective experience, knowledge production, culture, and politics.",
+    "excerpt": "Conference exploring digital technology's impact on subjectivity.",
+    "categories": ["Conferences", "Digital Sociology"],
+    "tags": ["conference", "digital-subjectivity", "cfp"]
+  },
+  {
+    "id": "p2024001",
+    "title": "The problem of generative AI from a cybernetics perspective",
+    "url": "https://markcarrigan.net/2024/04/21/the-problem-of-generative-ai-from-a-cybernetics-perspective-conversational-agents-as-variety-machines/",
+    "date": "2024-04-21",
+    "content": "Conversational agents can be understood as variety machines from a cybernetic perspective. Drawing on Ashby's Law of Requisite Variety, we can see how these systems generate novelty by recombining patterns from training data. The novelty generated doesn't cease to be novel simply because it's parasitic upon training data.",
+    "excerpt": "Understanding conversational AI through Ashby's Law of Requisite Variety.",
+    "categories": ["AI", "Theory"],
+    "tags": ["cybernetics", "generative-ai", "variety", "ashby"]
+  },
+  {
+    "id": "p2024002",
+    "title": "The value of a long-term personal blog in the next phase of GAI",
+    "url": "https://markcarrigan.net/2024/01/27/the-value-of-a-long-term-personal-blog-in-the-next-phase-of-gai/",
+    "date": "2024-01-27",
+    "content": "Keeping a personal blog in the long-term as a knowledge worker will turn out to have been a very good decision. The blog has become the default place I turn to in order to develop a thought, responding to what C Wright Mills once called the feel of an idea by trying to give it shape in words. With 5.5k long form posts over 14 years, this archive represents something significant.",
+    "excerpt": "Why maintaining a long-term blog matters in the age of generative AI.",
+    "categories": ["Blogging", "AI"],
+    "tags": ["blogging", "generative-ai", "c-wright-mills", "personal-archive"]
+  },
+  {
+    "id": "p2024003",
+    "title": "A simple way to understand Margaret Archer's morphogenetic approach",
+    "url": "https://markcarrigan.net/2024/08/01/a-simple-way-to-understand-margaret-archers-morphogenetic-approach/",
+    "date": "2024-08-01",
+    "content": "The morphogenetic approach can be understood through a simple temporal sequence: T1 (structural conditioning) leads to T2-T3 (social interaction) which leads to T4 (structural elaboration or reproduction). At T1, agents encounter structures and cultures that condition but do not determine their actions.",
+    "excerpt": "A clear explanation of the morphogenetic sequence.",
+    "categories": ["Social Theory", "Critical Realism"],
+    "tags": ["margaret-archer", "morphogenesis", "critical-realism", "analytical-dualism"]
+  },
+  {
+    "id": "p2024004",
+    "title": "Why hasn't Twitter/X died yet?",
+    "url": "https://markcarrigan.net/2024/09/07/why-hasnt-twitter-x-died-yet/",
+    "date": "2024-09-07",
+    "content": "Contemplating deleting my Twitter account and discussing influential people with significant online followings who are reluctant to leave the platform. Network effects and professional dependencies keep people locked in even as the platform degrades.",
+    "excerpt": "Examining why Twitter persists despite its problems.",
+    "categories": ["Social Media"],
+    "tags": ["twitter", "x", "platform-lock-in", "social-media"]
+  },
+  {
+    "id": "p2024005",
+    "title": "International Association of Critical Realism 2024: Looking Back to Look Forward",
+    "url": "https://markcarrigan.net/2024/03/18/international-association-of-critical-realism-2024-looking-back-to-look-forward/",
+    "date": "2024-03-18",
+    "content": "2024 marks the first anniversary of the death of Maggie Archer and the tenth anniversary of the death of Roy Bhaskar, who was instrumental in developing the philosophy of critical realism. A time for reflection on the tradition and its future.",
+    "excerpt": "Reflecting on critical realism after Archer and Bhaskar.",
+    "categories": ["Critical Realism"],
+    "tags": ["critical-realism", "margaret-archer", "roy-bhaskar", "iacr"]
+  },
+  {
+    "id": "p2024006",
+    "title": "Elon Musk (2010) vs Elon Musk (2024): the radicalisation of America's digital elites",
+    "url": "https://markcarrigan.net/2024/10/13/elon-musk-2010-vs-elon-musk-2024/",
+    "date": "2024-10-13",
+    "content": "Commentary on Elon Musk's evolution over time and what it reveals about the radicalisation of America's digital elites. The transformation from techno-optimist to right-wing culture warrior.",
+    "excerpt": "Tracking Musk's ideological transformation.",
+    "categories": ["Tech Industry", "Politics"],
+    "tags": ["elon-musk", "silicon-valley", "radicalization", "digital-elites"]
+  },
+  {
+    "id": "p2024007",
+    "title": "Sam Altman: the billionaire prepper who believes he has achieved enlightenment",
+    "url": "https://markcarrigan.net/2024/10/19/sam-altman-the-billionaire-prepper-who-believes-he-has-achieved-enlightenment/",
+    "date": "2024-10-19",
+    "content": "Drawing from Parmy Olson's book Supremacy: AI, ChatGPT and the Race That Will Change the World. The peculiar psychology of tech leaders who combine apocalyptic fears with messianic self-belief.",
+    "excerpt": "Examining the psychology of AI industry leaders.",
+    "categories": ["AI", "Tech Industry"],
+    "tags": ["sam-altman", "openai", "tech-culture", "ai-industry"]
+  },
+  {
+    "id": "p2024008",
+    "title": "Is an AI autumn coming?",
+    "url": "https://markcarrigan.net/2024/04/01/is-an-ai-autumn-coming-possibly-but-the-arguments-for-this-arent-as-obvious-as-people-seem-to-suggest/",
+    "date": "2024-04-01",
+    "content": "Discussing whether a crash is coming, with Gary Marcus being the most influential voice making that argument. The arguments for an AI autumn are not as obvious as people suggest.",
+    "excerpt": "Evaluating predictions of an AI industry downturn.",
+    "categories": ["AI"],
+    "tags": ["ai-winter", "ai-hype", "gary-marcus", "predictions"]
+  },
+  {
+    "id": "p2024009",
+    "title": "When will the AI bubble burst? What will be left behind?",
+    "url": "https://markcarrigan.net/2024/09/15/when-will-the-ai-bubble-burst-what-will-be-left-behind/",
+    "date": "2024-09-15",
+    "content": "The Nasdaq-100 lost a trillion dollars in market value as investors questioned when the AI revolution would show up as earnings. What will remain when the bubble deflates?",
+    "excerpt": "Considering the aftermath of AI hype.",
+    "categories": ["AI", "Economics"],
+    "tags": ["ai-bubble", "investment", "nasdaq", "tech-economics"]
+  },
+  {
+    "id": "p2024010",
+    "title": "What is ChatGPT? An introduction to humanism, transhumanism and posthumanism",
+    "url": "https://markcarrigan.net/2024/11/25/what-is-chatgpt-an-introduction-to-humanism-transhumanism-and-posthumanism/",
+    "date": "2024-11-25",
+    "content": "Notes for an upcoming talk. The experience of talking to ChatGPT is like dancing with your own intellect as reflected back through a computational mirror. An introduction to how different philosophical traditions understand AI.",
+    "excerpt": "Philosophical frameworks for understanding conversational AI.",
+    "categories": ["AI", "Philosophy"],
+    "tags": ["chatgpt", "humanism", "transhumanism", "posthumanism"]
+  },
+  {
+    "id": "p2024011",
+    "title": "My notes on Surveillance Capitalism",
+    "url": "https://markcarrigan.net/2024/08/29/my-notes-on-surveillance-capitalism/",
+    "date": "2024-08-29",
+    "content": "Surveillance capitalists employ ideology to legitimate their means of behavior modification: tuning, herding, and conditioning individuals and populations in ways designed to elude awareness. The evisceration of the human under digital capitalism. Work with Andrea Maccarini on platform socialisation explores what this means during intensified reliance upon platforms during the pandemic.",
+    "excerpt": "Notes on Zuboff's surveillance capitalism framework.",
+    "categories": ["Digital Capitalism"],
+    "tags": ["surveillance-capitalism", "zuboff", "behavior-modification", "platform-capitalism"]
+  },
+  {
+    "id": "p2024012",
+    "title": "Mobile generative AI as the next stage of surveillance capitalism",
+    "url": "https://markcarrigan.net/2024/01/07/mobile-generative-ai-as-the-next-stage-of-surveillance-capitalism/",
+    "date": "2024-01-07",
+    "content": "The consumer economics of generative AI won't work until it's in mobile devices, but there won't be enough compute on mobile devices to match cloud-based model performance. This tension shapes the next stage of surveillance capitalism.",
+    "excerpt": "How mobile AI extends surveillance capitalism.",
+    "categories": ["AI", "Digital Capitalism"],
+    "tags": ["mobile-ai", "surveillance-capitalism", "consumer-tech"]
+  },
+  {
+    "id": "p2023001",
+    "title": "Margaret Archer (1943-2023)",
+    "url": "https://markcarrigan.net/2023/06/08/margaret-archer-1943-2023/",
+    "date": "2023-06-08",
+    "content": "Margaret Archer has died. I remember reading philosophers like Harry Frankfurt, Alisdair Macintyre and Charles Taylor - all of whom Archer had initially introduced me to - and vaguely getting to grips with critical realism. I was first taught by Margaret Archer in 2006, as an MA Philosophy student at the University of Warwick.",
+    "excerpt": "A memorial reflection on Margaret Archer's life and influence.",
+    "categories": ["Critical Realism", "Personal"],
+    "tags": ["margaret-archer", "critical-realism", "obituary"]
+  },
+  {
+    "id": "p2023002",
+    "title": "Margaret Archer's late papers on artificial intelligence",
+    "url": "https://markcarrigan.net/2023/06/04/margaret-archers-late-papers-on-artificial-intelligence/",
+    "date": "2023-06-04",
+    "content": "Reflecting on how prescient Margaret Archer's late papers on artificial intelligence were. She described them as a philosophical exploration of the potential for active collaboration with humankind in research, therapy and care.",
+    "excerpt": "Archer's prescient work on AI collaboration.",
+    "categories": ["Critical Realism", "AI"],
+    "tags": ["margaret-archer", "artificial-intelligence", "human-ai-collaboration"]
+  },
+  {
+    "id": "p2023003",
+    "title": "Who actually reads this blog?",
+    "url": "https://markcarrigan.net/2023/11/01/who-actually-reads-this-blog/",
+    "date": "2023-11-01",
+    "content": "The blog receives approximately 12k+ visitors viewing 16k pages each month. People continually stumble across old content from the 5000+ posts spanning 13+ years. I now see the blog as something quasi-private which I make no effort to promote. The strange afterlife which blog posts can have never ceases to surprise me.",
+    "excerpt": "Reflecting on readership and the evolving purpose of a blog.",
+    "categories": ["Blogging"],
+    "tags": ["blogging", "readership", "analytics"]
+  },
+  {
+    "id": "p2023004",
+    "title": "Generative AI for Academics",
+    "url": "https://markcarrigan.net/2023/11/24/generative-ai-for-academics/",
+    "date": "2023-11-24",
+    "content": "Since ChatGPT's launch in November 2022, fascination and fear have permeated the university system. There is widespread belief that it represents an existential threat to academic practice. My book addresses how academics can engage productively with these tools.",
+    "excerpt": "Announcing the book on AI for academics.",
+    "categories": ["AI", "Books"],
+    "tags": ["generative-ai", "book", "academics", "chatgpt"]
+  },
+  {
+    "id": "p2023005",
+    "title": "The unintelligent agency of generative AI",
+    "url": "https://markcarrigan.net/2023/03/12/the-unintelligent-agency-of-generative-ai/",
+    "date": "2023-03-12",
+    "content": "Exploring how generative AI exhibits a form of agency that is not intelligent in the human sense. Drawing on Latour and platform capitalism perspectives to understand what these systems do.",
+    "excerpt": "Theorizing AI agency without intelligence.",
+    "categories": ["AI", "Theory"],
+    "tags": ["agency", "chatgpt", "generative-ai", "latour", "platform-capitalism"]
+  },
+  {
+    "id": "p2023006",
+    "title": "On sociological cynicism about AI",
+    "url": "https://markcarrigan.net/2023/09/01/on-sociological-cynicism-about-ai/",
+    "date": "2023-09-01",
+    "content": "The tendency to evaluate conversational agents against an imagined ideal contributor. Horror at the idea of AI peer reviewing in comparison to the imagined ideal of the engaged intellectual. But actual peer review often falls short of this ideal too.",
+    "excerpt": "Critiquing sociological dismissiveness toward AI.",
+    "categories": ["AI", "Sociology"],
+    "tags": ["ai-critique", "sociology", "peer-review", "cynicism"]
+  },
+  {
+    "id": "p2023007",
+    "title": "Reddit's API changes and the new business model of social media",
+    "url": "https://markcarrigan.net/2023/06/14/reddits-api-changes-and-the-new-business-model-of-social-media/",
+    "date": "2023-06-14",
+    "content": "The shift in business models of social media. The sudden lurch to a subscription model was provoked by exogenous shocks including a changing investment climate and Apple's impact on surveillance capitalism.",
+    "excerpt": "How API changes signal shifts in platform economics.",
+    "categories": ["Social Media", "Platform Studies"],
+    "tags": ["reddit", "api", "platform-capitalism", "business-models"]
+  },
+  {
+    "id": "p2023008",
+    "title": "How blogging is different from tweeting",
+    "url": "https://markcarrigan.net/2023/05/22/how-blogging-is-different-from-tweeting/",
+    "date": "2023-05-22",
+    "content": "Blogging and tweeting are fundamentally different forms of digital writing. A blog post is a space for developing thought, for working through ideas at length. Twitter encourages brevity, reaction, performance. The temporal rhythms differ - blog posts have long afterlives.",
+    "excerpt": "Distinguishing blogging from tweeting.",
+    "categories": ["Blogging", "Social Media"],
+    "tags": ["blogging", "twitter", "digital-writing"]
+  },
+  {
+    "id": "p2022001",
+    "title": "The social ontology of the Metaverse",
+    "url": "https://markcarrigan.net/2022/01/30/the-social-ontology-of-the-metaverse/",
+    "date": "2022-01-30",
+    "content": "The Centre for Social Ontology will be exploring the Metaverse. There's a temptation to treat this concept with the utmost cynicism, but it deserves serious analysis.",
+    "excerpt": "Bringing social ontology to metaverse analysis.",
+    "categories": ["Social Ontology", "Technology"],
+    "tags": ["metaverse", "social-ontology", "virtual-worlds"]
+  },
+  {
+    "id": "p2022002",
+    "title": "The growing infrastructural dominance of big tech within education",
+    "url": "https://markcarrigan.net/2022/10/26/some-thoughts-on-the-social-ontology-of-digital-education/",
+    "date": "2022-10-26",
+    "content": "Notes on a paper by Williamson et al. on Amazon and the new global connective architectures of education governance. The infrastructural dominance of large tech conglomerates in post-pandemic education.",
+    "excerpt": "Big tech's infrastructure capture in education.",
+    "categories": ["Education", "Platform Studies"],
+    "tags": ["amazon", "edtech", "infrastructure", "platform-capitalism"]
+  },
+  {
+    "id": "p2022003",
+    "title": "An interview with Margaret Archer about her life and work",
+    "url": "https://markcarrigan.net/2022/04/03/an-interview-with-margaret-archer-about-her-life-and-work/",
+    "date": "2022-04-03",
+    "content": "Originally published in Structure, culture and agency: Selected papers of Margaret Archer (Routledge, 2016). Archer describes how she walked away into the Centre for Critical Realism after her ISA presidency ended.",
+    "excerpt": "A comprehensive interview with Margaret Archer.",
+    "categories": ["Critical Realism", "Interviews"],
+    "tags": ["margaret-archer", "critical-realism", "interview"]
+  },
+  {
+    "id": "p2021001",
+    "title": "What have we lost in the accelerated academy?",
+    "url": "https://markcarrigan.net/2021/02/06/what-have-we-lost-in-the-accelerated-academy/",
+    "date": "2021-02-06",
+    "content": "An active orientation to issues that fascinate and motivate academics stands in tension with accelerative pressures which incline them to produce more. The slow professor literature is a discursive palliative intended to numb the pain without addressing the underlying condition.",
+    "excerpt": "What academic acceleration costs us.",
+    "categories": ["Higher Education", "Acceleration"],
+    "tags": ["accelerated-academy", "slow-scholarship", "academic-labour"]
+  },
+  {
+    "id": "p2021002",
+    "title": "What does it mean to think sociologically about educational technology?",
+    "url": "https://markcarrigan.net/2021/09/19/what-does-it-mean-to-think-sociologically-about-educational-technology/",
+    "date": "2021-09-19",
+    "content": "One approach would be to invoke the sociological imagination in the sense of drawing out the connections between what C Wright Mills called private troubles and public issues. Educational technology is never just technical.",
+    "excerpt": "Applying sociological imagination to edtech.",
+    "categories": ["Education", "Digital Sociology"],
+    "tags": ["educational-technology", "sociological-imagination", "c-wright-mills"]
+  },
+  {
+    "id": "p2021003",
+    "title": "What I will miss about Cambridge, what I won't miss about Cambridge",
+    "url": "https://markcarrigan.net/2021/08/21/what-i-will-miss-about-cambridge-what-i-wont-miss-about-cambridge/",
+    "date": "2021-08-21",
+    "content": "Leaving the University of Cambridge to start as Lecturer in Education at the University of Manchester. Moving back to the city of my birth.",
+    "excerpt": "Reflections on leaving Cambridge for Manchester.",
+    "categories": ["Personal", "Academia"],
+    "tags": ["cambridge", "manchester", "career", "university"]
+  },
+  {
+    "id": "p2021004",
+    "title": "What is practical reasoning?",
+    "url": "https://markcarrigan.net/2021/10/26/what-is-practical-reasoning/",
+    "date": "2021-10-26",
+    "content": "My increasing use of the phrase practical reasoning is a curious outcome of a meandering trajectory in which I deliberately avoided the concept as a philosophy student.",
+    "excerpt": "Exploring the concept of practical reasoning.",
+    "categories": ["Philosophy"],
+    "tags": ["practical-reasoning", "philosophy", "methodology"]
+  },
+  {
+    "id": "p2021005",
+    "title": "The sociology of networked harassment",
+    "url": "https://markcarrigan.net/2021/06/19/the-sociology-of-networked-harassment/",
+    "date": "2021-06-19",
+    "content": "Alice Marwick's paper develops a theory of morally motivated network harassment to explain the pervasive dynamics of online abuse.",
+    "excerpt": "Understanding online harassment sociologically.",
+    "categories": ["Digital Sociology"],
+    "tags": ["harassment", "online-abuse", "social-media", "alice-marwick"]
+  },
+  {
+    "id": "p2021006",
+    "title": "Nick Land's Poeticisation of Capital's Obscenity",
+    "url": "https://markcarrigan.net/2021/02/24/nick-lands-poeticisation-of-capitals-obscenity/",
+    "date": "2021-02-24",
+    "content": "Exploring Nick Land's acceleration and its relationship to capitalism. How theoretical excess becomes political danger.",
+    "excerpt": "Critiquing Nick Land's accelerationism.",
+    "categories": ["Theory", "Politics"],
+    "tags": ["nick-land", "accelerationism", "capitalism", "mark-fisher"]
+  },
+  {
+    "id": "p2020001",
+    "title": "The Anthropological Shock",
+    "url": "https://markcarrigan.net/2020/03/26/the-anthropological-shock/",
+    "date": "2020-03-26",
+    "content": "Anthropological shocks occur when many populations feel they have been subjected to horrendous events that leave indelible marks on their consciousness. The pandemic as anthropological shock.",
+    "excerpt": "Understanding collective trauma through anthropological shock.",
+    "categories": ["Social Theory"],
+    "tags": ["pandemic", "trauma", "anthropological-shock", "covid"]
+  },
+  {
+    "id": "p2020002",
+    "title": "Do We Need a Digital Sociology of Higher Education?",
+    "url": "https://markcarrigan.net/2020/11/09/a-conversation-with-neil-selwyn-do-we-need-a-digital-sociology-of-higher-education/",
+    "date": "2020-11-09",
+    "content": "A conversation with Neil Selwyn exploring the significance of digital technology within the sociology of higher education. The tendency to treat technology in terms of application within specific subdomains.",
+    "excerpt": "The case for digital sociology of higher education.",
+    "categories": ["Digital Sociology", "Higher Education"],
+    "tags": ["digital-sociology", "higher-education", "neil-selwyn"]
+  },
+  {
+    "id": "p2020003",
+    "title": "A note of caution about posthumanism in education",
+    "url": "https://markcarrigan.net/2020/12/08/against-posthumanism-in-education/",
+    "date": "2020-12-08",
+    "content": "How influential posthumanism is within education vis-a-vis other theoretical perspectives. A note of caution about uncritical adoption.",
+    "excerpt": "Questioning posthumanism's influence in education.",
+    "categories": ["Education", "Theory"],
+    "tags": ["posthumanism", "education", "theory"]
+  },
+  {
+    "id": "p2019001",
+    "title": "Platform Surveillance",
+    "url": "https://markcarrigan.net/2019/05/06/platform-surveillance/",
+    "date": "2019-05-06",
+    "content": "A special issue of Surveillance & Society considers platform capitalism from the perspective of surveillance studies. Digital platforms fundamentally transform social practices and relations, recasting them as surveillant exchanges. Surveillance is intrinsic to platforms.",
+    "excerpt": "How platforms transform social life through surveillance.",
+    "categories": ["Platform Studies", "Surveillance"],
+    "tags": ["platform-capitalism", "surveillance", "surveillance-studies"]
+  },
+  {
+    "id": "p2019002",
+    "title": "The cruel optimism of educational technology",
+    "url": "https://markcarrigan.net/2019/06/09/the-cruel-optimism-of-educational-technology/",
+    "date": "2019-06-09",
+    "content": "Notes on Macgilchrist's paper about how the digital data practices of educational technology providers inadvertently hinder educational equity.",
+    "excerpt": "How edtech promises obstruct educational equity.",
+    "categories": ["Education", "Platform Studies"],
+    "tags": ["edtech", "cruel-optimism", "educational-equity"]
+  },
+  {
+    "id": "p2019003",
+    "title": "The social ontology of algorithms",
+    "url": "https://markcarrigan.net/2019/01/07/the-social-ontology-of-algorithms-and-the-importance-of-ethnographic-technique/",
+    "date": "2019-01-07",
+    "content": "Notes on Seaver's paper about algorithms as culture and some tactics for the ethnography of algorithmic systems.",
+    "excerpt": "Understanding algorithms through social ontology.",
+    "categories": ["Social Ontology", "Platform Studies"],
+    "tags": ["algorithms", "social-ontology", "ethnography"]
+  },
+  {
+    "id": "p2019004",
+    "title": "Viral populism: when isomorphism through algorithm hits politics",
+    "url": "https://markcarrigan.net/2019/09/24/viral-populism-what-happens-when-isomorphism-through-algorithm-hits-politics/",
+    "date": "2019-09-24",
+    "content": "A prescient 2014 post by BuzzFeed editor Ben Smith about viral populism facilitated by social media. How algorithmic logic reshapes political discourse.",
+    "excerpt": "How algorithms enable populist politics.",
+    "categories": ["Politics", "Platform Studies"],
+    "tags": ["populism", "algorithms", "social-media", "politics"]
+  },
+  {
+    "id": "p2018001",
+    "title": "What is platform literacy?",
+    "url": "https://markcarrigan.net/2018/05/13/what-is-platform-literacy/",
+    "date": "2018-05-13",
+    "content": "Platform literacy is a capacity to understand how platforms shape the action which takes place through them, sometimes in observable and explicit ways but usually in unobservable and implicit ones.",
+    "excerpt": "Defining the concept of platform literacy.",
+    "categories": ["Platform Studies", "Digital Literacy"],
+    "tags": ["platform-literacy", "digital-literacy", "platforms"]
+  },
+  {
+    "id": "p2018002",
+    "title": "The Flat Earth phenomenon and what it reveals about YouTube",
+    "url": "https://markcarrigan.net/2018/12/17/the-flat-earth-phenomenon-and-what-it-reveals-about-youtube/",
+    "date": "2018-12-17",
+    "content": "Even if the resurgent belief in a flat earth remains a marginal phenomenon, it is fascinating for what it reveals about YouTube's recommendation algorithms and their epistemological effects.",
+    "excerpt": "How YouTube algorithms enable conspiracy beliefs.",
+    "categories": ["Platform Studies"],
+    "tags": ["youtube", "flat-earth", "algorithms", "misinformation"]
+  },
+  {
+    "id": "p2017001",
+    "title": "Margaret Archer as neo-classical British social theorist",
+    "url": "https://markcarrigan.net/2017/11/26/margaret-archer-as-neo-classical-british-social-theorist/",
+    "date": "2017-11-26",
+    "content": "While Margaret Archer's theoretical work is widely respected, it is often categorised as little more than an elaboration of Roy Bhaskar and a critique of Anthony Giddens. This framing leaves it secondary. I suggest she should be categorised as a neo-classical British social theorist.",
+    "excerpt": "Reframing Archer's contribution to social theory.",
+    "categories": ["Social Theory", "Critical Realism"],
+    "tags": ["margaret-archer", "critical-realism", "social-theory"]
+  },
+  {
+    "id": "p2017002",
+    "title": "Notes on Platform Capitalism",
+    "url": "https://markcarrigan.net/2017/01/14/notes-on-platform-capitalism/",
+    "date": "2017-01-14",
+    "content": "In Platform Capitalism, Nick Srnicek addresses what he sees as an oversight in digital capitalism literature. One set of contributions focuses on emerging technologies and their implications for privacy and surveillance but ignores the economic analysis.",
+    "excerpt": "Notes on Srnicek's platform capitalism thesis.",
+    "categories": ["Platform Studies"],
+    "tags": ["platform-capitalism", "nick-srnicek", "digital-capitalism"]
+  },
+  {
+    "id": "p2017003",
+    "title": "The coming big data revolution within higher education",
+    "url": "https://markcarrigan.net/2017/10/17/the-coming-big-data-revolution-within-higher-education/",
+    "date": "2017-10-17",
+    "content": "It seems passé to talk about the big data revolution in 2017 as much of the initial hype has subsided. But the implications for higher education are still working through.",
+    "excerpt": "Big data's implications for universities.",
+    "categories": ["Higher Education", "Technology"],
+    "tags": ["big-data", "higher-education", "learning-analytics"]
+  },
+  {
+    "id": "p2017004",
+    "title": "The Silicon Valley Narrative",
+    "url": "https://markcarrigan.net/2017/02/20/the-silicon-valley-narrative/",
+    "date": "2017-02-20",
+    "content": "An extract from Audrey Watters' The Curse of the Monsters of Educational Technology. A favorite example of digital cultural critique analyzing the rhetoric of disruption.",
+    "excerpt": "Critiquing Silicon Valley's narrative of disruption.",
+    "categories": ["Tech Industry"],
+    "tags": ["silicon-valley", "disruption", "audrey-watters", "edtech"]
+  },
+  {
+    "id": "p2015001",
+    "title": "My brain has too many tabs open",
+    "url": "https://markcarrigan.net/2015/10/23/my-brain-has-too-many-tabs-open-the-problem-of-attention-in-digital-capitalism/",
+    "date": "2015-10-23",
+    "content": "The phenomenology of fragmented attention under digital capitalism. The constant tab-switching, the pull of notifications, the difficulty of sustained focus. Attention becomes a finite resource that gets allocated, fragmented, competed for.",
+    "excerpt": "The phenomenology of fragmented attention.",
+    "categories": ["Digital Capitalism", "Attention"],
+    "tags": ["distraction", "attention", "digital-capitalism", "phenomenology"]
+  },
+  {
+    "id": "p2015002",
+    "title": "Life in the Accelerated Academy, part 2",
+    "url": "https://markcarrigan.net/2015/03/25/life-in-the-accelerated-academy-part-2/",
+    "date": "2015-03-25",
+    "content": "Much of my motivation for the Accelerated Academy project comes from a desire to understand this aspect of daily experience in a sociological way. The accelerated academy is a toxic environment in which an out of control metrics regime incites cognitive triage.",
+    "excerpt": "Understanding academic acceleration sociologically.",
+    "categories": ["Higher Education", "Acceleration"],
+    "tags": ["accelerated-academy", "metrics", "cognitive-triage"]
+  },
+  {
+    "id": "p2015003",
+    "title": "Surviving life in the accelerated academy: prospects and problems for digital scholarship",
+    "url": "https://markcarrigan.net/2015/09/30/surviving-life-in-the-accelerated-academy-prospects-and-problems-for-digital-scholarship/",
+    "date": "2015-09-30",
+    "content": "The developing discourse on stress and anxiety in academia has an ambivalent relationship to digital technology. Using the notion of social acceleration to address changes within higher education and the role of digital technology in their emergence.",
+    "excerpt": "Digital scholarship and academic acceleration.",
+    "categories": ["Higher Education", "Digital Scholarship"],
+    "tags": ["accelerated-academy", "digital-scholarship", "social-acceleration"]
+  },
+  {
+    "id": "p2014001",
+    "title": "Life in the accelerated academy: how it's possible for Žižek to publish 55 books",
+    "url": "https://markcarrigan.net/2014/12/07/life-in-the-accelerated-academy-how-its-possible-for-zizek-to-publish-55-books-in-14-years-and-what-it-says-about-higher-education/",
+    "date": "2014-12-07",
+    "content": "Examining how Žižek's prolific output became possible and what it reveals about contemporary academic production. The accelerated academy and its effects on scholarly practice.",
+    "excerpt": "Academic productivity and the accelerated academy.",
+    "categories": ["Higher Education", "Acceleration"],
+    "tags": ["zizek", "accelerated-academy", "academic-publishing"]
+  },
+  {
+    "id": "p2014002",
+    "title": "Your daily dose of Sociological Imagination",
+    "url": "https://markcarrigan.net/2014/10/09/your-daily-dose-of-sociological-imagination-reflections-on-social-media-and-public-sociology/",
+    "date": "2014-10-09",
+    "content": "Mills saw the failure of vision and expression in what could almost be construed as epochal terms. Mills was estranged from the academic establishment, which gave him intellectual freedom from the cultural norms prevalent within professional sociology.",
+    "excerpt": "Mills and public sociology in the digital age.",
+    "categories": ["Sociology", "Social Media"],
+    "tags": ["c-wright-mills", "public-sociology", "social-media", "sociological-imagination"]
+  },
+  {
+    "id": "p2013001",
+    "title": "The Sociological Craft Project",
+    "url": "https://markcarrigan.net/2013/05/22/the-sociological-craft-project/",
+    "date": "2013-05-22",
+    "content": "In the appendix to Sociological Imagination entitled On Intellectual Craftsmanship, C. Wright Mills advocates keeping a file or journal. He argues that doing so encourages you to capture fringe-thoughts: various ideas which may be by-products of everyday life.",
+    "excerpt": "Mills on intellectual craftsmanship.",
+    "categories": ["Methodology", "Sociology"],
+    "tags": ["c-wright-mills", "intellectual-craft", "reflexivity", "sociological-imagination"]
+  },
+  {
+    "id": "p2013002",
+    "title": "The Reflexive Imperative and its Relationship to the Morphogenetic Approach",
+    "url": "https://markcarrigan.net/2013/07/21/the-reflexive-imperative-part-1/",
+    "date": "2013-07-21",
+    "content": "Archer is a systematic theorist who carefully crafts fundamental concepts: analytical dualism, the morphogenetic sequence, the stratification of society and agency. Her approach integrates morphogenetic systems theory of Walter Buckley, functionalist Marxism of David Lockwood and critical realism of Bhaskar.",
+    "excerpt": "Understanding Archer's reflexivity framework.",
+    "categories": ["Social Theory", "Critical Realism"],
+    "tags": ["margaret-archer", "reflexivity", "morphogenesis", "internal-conversation"]
+  },
+  {
+    "id": "p2013003",
+    "title": "Asexuality and Its Implications for Sexuality Studies",
+    "url": "https://markcarrigan.net/2013/11/26/asexuality-and-its-implications-for-sexuality-studies/",
+    "date": "2013-11-26",
+    "content": "While asexuality is usually defined as not experiencing sexual attraction amongst those who self-identify as asexual, the question becomes more complex when considered from research perspectives. The definition is best thought of as an umbrella covering a spectrum of orientations.",
+    "excerpt": "Theorizing asexuality for sexuality studies.",
+    "categories": ["Sexuality Studies"],
+    "tags": ["asexuality", "sexuality", "identity"]
+  },
+  {
+    "id": "p2012001",
+    "title": "Why sexual people don't get asexuality and why it matters",
+    "url": "https://markcarrigan.net/2012/08/21/why-sexual-people-dont-get-asexuality-and-why-it-matters/",
+    "date": "2012-08-21",
+    "content": "Reactions of sexual people to asexuality reveal the sexual assumption: the usually unexamined presupposition that sexual attraction is both universal and uniform such that its absence must be explicable in terms of a distinguishable pathology.",
+    "excerpt": "The sexual assumption and asexuality.",
+    "categories": ["Sexuality Studies"],
+    "tags": ["asexuality", "sexual-assumption", "normativity"]
+  },
+  {
+    "id": "p2012002",
+    "title": "The cultural significance of asexuality",
+    "url": "https://markcarrigan.net/2012/01/31/the-cultural-significance-of-asexuality/",
+    "date": "2012-01-31",
+    "content": "Increased visibility of asexuality would make being sexual an object of deliberate reflection. A widespread acquaintance with asexuality would bring being sexual into discursive awareness in a way that hasn't previously been the case.",
+    "excerpt": "How asexuality visibility changes sexual discourse.",
+    "categories": ["Sexuality Studies"],
+    "tags": ["asexuality", "visibility", "cultural-significance"]
+  },
+  {
+    "id": "p2011001",
+    "title": "C. Wright Mills: Legacies and Prospects – 50 Years On",
+    "url": "https://markcarrigan.net/2011/10/12/c-wright-mills-legacies-and-prospects-50-years-on/",
+    "date": "2011-10-12",
+    "content": "A panel exploring the relevance of C. Wright Mills' ideas 50 years on, considering the value of his legacy and the resources his work offers to understand the rapidly changing social world of the 21st century.",
+    "excerpt": "Assessing Mills' continuing relevance.",
+    "categories": ["Social Theory", "Sociology"],
+    "tags": ["c-wright-mills", "sociological-imagination", "social-theory"]
+  }
+]
